@@ -1,6 +1,6 @@
 ﻿namespace LocalBusinessExplorer
 {
-    public partial class MainPage : ContentPage
+   /* public partial class MainPage : ContentPage
     {
         int count = 0;
 
@@ -21,5 +21,5 @@
             SemanticScreenReader.Announce(CounterBtn.Text);
         }
     }
-
+*/
 }
