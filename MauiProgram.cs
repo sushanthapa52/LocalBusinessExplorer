@@ -1,4 +1,6 @@
-﻿using LocalBusinessExplorer.Services;
+﻿using Firebase.Auth.Providers;
+using Firebase.Auth;
+using LocalBusinessExplorer.Services;
 using LocalBusinessExplorer.ViewModel;
 using LocalBusinessExplorer.Views;
 using Microsoft.Extensions.Configuration;
@@ -23,6 +25,16 @@ namespace LocalBusinessExplorer
                 .SetBasePath(AppContext.BaseDirectory)
                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
                 .Build();
+            var firebaseConfig = config.GetSection("Firebase");
+            builder.Services.AddSingleton(services => new FirebaseAuthClient(new FirebaseAuthConfig()
+            {
+                ApiKey = firebaseConfig["ApiKey"],
+                AuthDomain = firebaseConfig["AuthDomain"],
+                Providers = new FirebaseAuthProvider[]
+                {
+                    new EmailProvider()
+                },
+            }));
 
             builder.Services.AddSingleton<FirebaseService>();
             builder.Services.AddTransient<LoginPage>();
