@@ -15,7 +15,9 @@
                    Keyboard="Email"
                    HeightRequest="50"
                    TextColor="Black"
-                   PlaceholderColor="Gray" />
+                   PlaceholderColor="Gray" 
+                                  Text="{Binding Email}"
+/>
 
         <!-- Password Entry -->
         <Grid>
@@ -24,7 +26,9 @@
                        IsPassword="True"
                        HeightRequest="50"
                        TextColor="Black"
-                       PlaceholderColor="Gray" />
+                       PlaceholderColor="Gray"
+                                      Text="{Binding Password}"
+/>
             <ImageButton Source="eye_i.png"
                              HeightRequest="25"
                              WidthRequest="25"
@@ -38,7 +42,9 @@
         <Button Text="Sign In"
                     HeightRequest="50"
                     BackgroundColor="Black"
-                    TextColor="White" />
+                    TextColor="White" 
+                    Clicked="OnLoginClicked"
+/>
 
         <!-- Google Sign In Button -->
         <Button Text="Sign in with Google"
