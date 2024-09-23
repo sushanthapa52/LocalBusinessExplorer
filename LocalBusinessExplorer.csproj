@@ -57,22 +57,27 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <AndroidResource Remove="NewFolder\**" />
 	  <AndroidResource Remove="Platforms\NewFolder\**" />
+	  <Compile Remove="NewFolder\**" />
 	  <Compile Remove="Platforms\NewFolder\**" />
+	  <EmbeddedResource Remove="NewFolder\**" />
 	  <EmbeddedResource Remove="Platforms\NewFolder\**" />
+	  <MauiCss Remove="NewFolder\**" />
 	  <MauiCss Remove="Platforms\NewFolder\**" />
+	  <MauiXaml Remove="NewFolder\**" />
 	  <MauiXaml Remove="Platforms\NewFolder\**" />
+	  <None Remove="NewFolder\**" />
 	  <None Remove="Platforms\NewFolder\**" />
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="FirebaseAuthentication.net" Version="4.1.0" />
+		<PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="8.0.0" />
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="NewFolder\" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -82,12 +87,15 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="NewFolder\Login.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
 	  <MauiXaml Update="Views\LoginPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>
+	<ItemGroup>
+		<None Update="appsettings.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
+
 
 </Project>

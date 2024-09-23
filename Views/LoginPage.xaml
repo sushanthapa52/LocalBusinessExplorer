@@ -16,7 +16,7 @@
                    HeightRequest="50"
                    TextColor="Black"
                    PlaceholderColor="Gray" 
-                                  Text="{Binding Email}"
+                  Text="{Binding Email}"
 />
 
         <!-- Password Entry -->
@@ -27,7 +27,7 @@
                        HeightRequest="50"
                        TextColor="Black"
                        PlaceholderColor="Gray"
-                                      Text="{Binding Password}"
+                        Text="{Binding Password}"
 />
             <ImageButton Source="eye_i.png"
                              HeightRequest="25"

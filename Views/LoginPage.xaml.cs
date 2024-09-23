@@ -17,6 +17,6 @@ public partial class LoginPage : ContentPage
     {
         var email = emailEntry.Text;
         var password = passwordEntry.Text;
-        await _viewModel.Login(email, password);
+       // await _viewModel.Login(email, password);
     }
 }
