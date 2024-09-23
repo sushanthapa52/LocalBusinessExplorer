@@ -1,8 +1,8 @@
 namespace LocalBusinessExplorer.Views;
 
-public partial class NewPage1 : ContentPage
+public partial class LoginPage : ContentPage
 {
-	public NewPage1()
+	public LoginPage()
 	{
 		InitializeComponent();
 	}
