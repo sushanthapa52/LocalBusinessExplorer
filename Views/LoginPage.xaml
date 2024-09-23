@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LocalBusinessExplorer.Views.LoginPage"
+             Title="LoginPage">
+    <VerticalStackLayout>
+        <!-- Image Section -->
+        <Image Source="app_icon.png"
+                   HeightRequest="200"
+                   HorizontalOptions="Center" />
+
+        <!-- Email Entry -->
+        <Entry x:Name="emailEntry"
+                   Placeholder="Email"
+                   Keyboard="Email"
+                   HeightRequest="50"
+                   TextColor="Black"
+                   PlaceholderColor="Gray" />
+
+        <!-- Password Entry -->
+        <Grid>
+            <Entry x:Name="passwordEntry"
+                       Placeholder="Password"
+                       IsPassword="True"
+                       HeightRequest="50"
+                       TextColor="Black"
+                       PlaceholderColor="Gray" />
+            <ImageButton Source="eye_i.png"
+                             HeightRequest="25"
+                             WidthRequest="25"
+                             HorizontalOptions="End"
+                             VerticalOptions="Center"
+                             BackgroundColor="Transparent"
+/>
+        </Grid>
+
+        <!-- Sign In Button -->
+        <Button Text="Sign In"
+                    HeightRequest="50"
+                    BackgroundColor="Black"
+                    TextColor="White" />
+
+        <!-- Google Sign In Button -->
+        <Button Text="Sign in with Google"
+                    HeightRequest="50"
+                    BackgroundColor="White"
+                    TextColor="Black"
+                    ImageSource="google_icon.png" />
+    </VerticalStackLayout>
+</ContentPage>
