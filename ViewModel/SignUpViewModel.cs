@@ -1,5 +1,5 @@
 ﻿using LocalBusinessExplorer.Services;
-using LocalBusinessExplorer.Views;
+using Microsoft.Maui.ApplicationModel.Communication;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,14 +10,15 @@ using System.Threading.Tasks;
 
 namespace LocalBusinessExplorer.ViewModel
 {
-    public class LoginViewModel : INotifyPropertyChanged
+    public class SignUpViewModel : INotifyPropertyChanged
     {
-
         private string _email;
         private string _password;
         private string _loginResult;
+        private string _confirmpassword;
+
         private readonly FirebaseService _firebaseService;
-        public LoginViewModel(FirebaseService firebaseService)
+        public SignUpViewModel(FirebaseService firebaseService)
         {
             _firebaseService = firebaseService;
         }
@@ -41,6 +42,16 @@ namespace LocalBusinessExplorer.ViewModel
             }
         }
 
+        public string ConfirmPassword
+        {
+            get => _confirmpassword;
+            set
+            {
+                _confirmpassword = value;
+                OnPropertyChanged();
+            }
+        }
+
         public string LoginResult
         {
             get => _loginResult;
@@ -50,10 +61,22 @@ namespace LocalBusinessExplorer.ViewModel
                 OnPropertyChanged();
             }
         }
-        public async Task Login(string Email, string Password)
+        public async Task SignUp(string Email, string Password)
         {
-            var token = await _firebaseService.LoginWithEmailPassword(Email, Password);
-            await Shell.Current.GoToAsync($"///{nameof(HomePage)}?token={token}");
+            try
+            {
+                // Assuming this method registers the user and returns a token
+                var token = await _firebaseService.RegisterWithEmailPassword(Email, Password);
+
+                // Navigate to the login page after successful registration
+                await Shell.Current.GoToAsync("//LoginPage");
+            }
+            catch (Exception ex)
+            {
+                // Handle any errors during the sign-up process
+                // You might want to display a message to the user
+                Console.WriteLine($"Sign up failed: {ex.Message}");
+            }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -62,7 +85,5 @@ namespace LocalBusinessExplorer.ViewModel
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-
-
     }
 }

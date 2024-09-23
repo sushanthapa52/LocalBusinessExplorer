@@ -20,17 +20,6 @@ namespace LocalBusinessExplorer.Services
             _authClient = authClient;
         }
 
-        //public void InitializeFirebase()
-        //{
-        //    var apiKey = _configuration["Firebase:ApiKey"];
-        //    var authDomain = _configuration["Firebase:AuthDomain"];
-        //    var projectId = _configuration["Firebase:ProjectId"];
-        //    var storageBucket = _configuration["Firebase:StorageBucket"];
-        //    var messagingSenderId = _configuration["Firebase:MessagingSenderId"];
-        //    var appId = _configuration["Firebase:AppId"];
-        //    var measurementId = _configuration["Firebase:MeasurementId"];
-
-        //}
         public async Task<string> LoginWithEmailPassword(string email, string password)
         {
             try
@@ -40,6 +29,19 @@ namespace LocalBusinessExplorer.Services
 
                 return userCredential.User.Uid;
                 //return userCredential.User?.GetIdTokenAsync().ToString();
+            }
+            catch (Exception ex)
+            {
+                // Handle error
+                return null;
+            }
+        }
+        public async Task<string> RegisterWithEmailPassword(string email, string password)
+        {
+            try
+            {
+                var userCredential = await _authClient.CreateUserWithEmailAndPasswordAsync(email, password);
+                return userCredential.User?.GetIdTokenAsync().ToString();
             }
             catch (Exception ex)
             {

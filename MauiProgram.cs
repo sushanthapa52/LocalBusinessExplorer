@@ -38,7 +38,12 @@ namespace LocalBusinessExplorer
 
             builder.Services.AddSingleton<FirebaseService>();
             builder.Services.AddTransient<LoginPage>();
-            builder.Services.AddTransient<LoginViewModel>();    
+            builder.Services.AddTransient<HomePage>();
+            builder.Services.AddTransient<LoginViewModel>();
+            builder.Services.AddTransient<SignUpPage>();
+            builder.Services.AddTransient<SignUpViewModel>();
+            
+            builder.Services.AddTransient<HomePageViewModel>();
 
 
 #if DEBUG

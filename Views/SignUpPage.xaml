@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LocalBusinessExplorer.Views.SignUpPage"
+             Title="SignUpPage">
+    <VerticalStackLayout>
+
+        <!-- Image Section -->
+        <Image Source="app_icon.png"
+               HeightRequest="200"
+               HorizontalOptions="Center" />
+
+        <!-- Email Entry -->
+        <Entry x:Name="emailEntry"
+               Placeholder="Email"
+               Keyboard="Email"
+               HeightRequest="50"
+               TextColor="White"
+               PlaceholderColor="Gray"
+               Text="{Binding Email}" />
+
+        <!-- Password Entry -->
+        <Grid>
+            <Entry x:Name="passwordEntry"
+                   Placeholder="Password"
+                   IsPassword="True"
+                   HeightRequest="50"
+                   TextColor="White"
+                   PlaceholderColor="Gray"
+                   Text="{Binding Password}" />
+            <ImageButton Source="eye_i.png"
+                         HeightRequest="25"
+                         WidthRequest="25"
+                         HorizontalOptions="End"
+                         VerticalOptions="Center"
+                         BackgroundColor="Transparent" />
+        </Grid>
+
+        <!-- Confirm Password Entry -->
+        <Grid>
+            <Entry x:Name="confirmPasswordEntry"
+                   Placeholder="Confirm Password"
+                   IsPassword="True"
+                   HeightRequest="50"
+                   TextColor="White"
+                   PlaceholderColor="Gray"
+                   Text="{Binding ConfirmPassword}" />
+            <ImageButton Source="eye_i.png"
+                         HeightRequest="25"
+                         WidthRequest="25"
+                         HorizontalOptions="End"
+                         VerticalOptions="Center"
+                         BackgroundColor="Transparent" />
+        </Grid>
+
+        <!-- Sign Up Button -->
+        <Button Text="Sign Up"
+                HeightRequest="50"
+                BackgroundColor="Black"
+                TextColor="White"
+                Clicked="OnSignUpClicked" />
+
+
+        <!-- Login Link -->
+        <Button Text="Already a user? Log in here"
+                HeightRequest="40"
+                TextColor="Blue"
+                BackgroundColor="Transparent"
+                Clicked="OnLoginClicked" />
+
+    </VerticalStackLayout>
+</ContentPage>

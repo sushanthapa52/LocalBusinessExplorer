@@ -6,7 +6,7 @@ public partial class LoginPage : ContentPage
 {
     private LoginViewModel _viewModel;
 
-    public LoginPage(LoginViewModel viewModel)
+    public LoginPage(LoginViewModel viewModel )
 	{
 		InitializeComponent();
         _viewModel = viewModel;
@@ -19,4 +19,11 @@ public partial class LoginPage : ContentPage
         var password = passwordEntry.Text;
         await _viewModel.Login(email, password);
     }
+
+    private async void OnSignUpClicked(object sender, EventArgs e)
+    {
+        // Navigate to Sign Up Page
+        await Shell.Current.GoToAsync($"///{nameof(SignUpPage)}");
+    }
+
 }
