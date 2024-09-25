@@ -14,7 +14,7 @@
                    Placeholder="Email"
                    Keyboard="Email"
                    HeightRequest="50"
-                   TextColor="White"
+                   TextColor="Black"
                    PlaceholderColor="Gray" 
                   Text="{Binding Email}"
 />
@@ -25,7 +25,7 @@
                        Placeholder="Password"
                        IsPassword="True"
                        HeightRequest="50"
-                       TextColor="White"
+                       TextColor="Black"
                        PlaceholderColor="Gray"
                         Text="{Binding Password}"
 />
@@ -43,15 +43,8 @@
                     HeightRequest="50"
                     BackgroundColor="Black"
                     TextColor="White" 
-                    Clicked="OnLoginClicked"
-/>
+                    Clicked="OnLoginClicked"/>
 
-        <!-- Google Sign In Button -->
-        <Button Text="Sign in with Google"
-                    HeightRequest="50"
-                    BackgroundColor="White"
-                    TextColor="Black"
-                    ImageSource="google_icon.png" />
 
         <!-- Sign Up Text -->
         <!-- Sign Up Link -->
