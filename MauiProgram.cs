@@ -5,6 +5,7 @@ using LocalBusinessExplorer.ViewModel;
 using LocalBusinessExplorer.Views;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using System.Reflection;
 
 namespace LocalBusinessExplorer
 {
@@ -20,21 +21,23 @@ namespace LocalBusinessExplorer
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
-
-            var config = new ConfigurationBuilder()
-                .SetBasePath(AppContext.BaseDirectory)
-                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-                .Build();
-            var firebaseConfig = config.GetSection("Firebase");
-            builder.Services.AddSingleton(services => new FirebaseAuthClient(new FirebaseAuthConfig()
+            var assembly = typeof(App).GetTypeInfo().Assembly;
+            using (var stream = assembly.GetManifestResourceStream("LocalBusinessExplorer.appsettings.json"))
             {
-                ApiKey = firebaseConfig["ApiKey"],
-                AuthDomain = firebaseConfig["AuthDomain"],
-                Providers = new FirebaseAuthProvider[]
+                var config = new ConfigurationBuilder()
+                    .AddJsonStream(stream)
+                    .Build();
+                var firebaseConfig = config.GetSection("Firebase");
+                builder.Services.AddSingleton(services => new FirebaseAuthClient(new FirebaseAuthConfig()
                 {
+                    ApiKey = firebaseConfig["ApiKey"],
+                    AuthDomain = firebaseConfig["AuthDomain"],
+                    Providers = new FirebaseAuthProvider[]
+                    {
                     new EmailProvider()
-                },
-            }));
+                    },
+                }));
+            }
 
             builder.Services.AddSingleton<FirebaseService>();
             builder.Services.AddTransient<LoginPage>();
