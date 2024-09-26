@@ -1,12 +1,152 @@
-<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="LocalBusinessExplorer.Views.HomePage"
-             Title="HomePage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="LocalBusinessExplorer.Views.HomePage">
+
+    <Grid>
+        <!-- Top bar with navigation and title -->
+        <Grid RowDefinitions="Auto, Auto, *">
+            <Grid Padding="10" BackgroundColor="White" Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <!-- Back Button -->
+                <Button Text="&#x2190;"
+                    FontSize="Large"
+                    BackgroundColor="White"
+                />
+
+                <!-- Title -->
+                <Label Text="Local Business Explorer"
+                    FontSize="Medium"
+                    FontAttributes="Bold"
+                    VerticalOptions="Center"
+                    Grid.Column="1"
+                    HorizontalOptions="Center" />
+
+                <!-- Menu Button -->
+                <Button Text="&#x2022;&#x2022;&#x2022;"
+                    FontSize="Large"
+                    BackgroundColor="White"
+                    Grid.Column="2" />
+            </Grid>
+
+
+            <!-- Map and categories section -->
+            <ScrollView Grid.Row="2">
+                <StackLayout Spacing="10">
+                    <!-- Map Image or Control -->
+                    <Image Source="map.png"
+                        HeightRequest="200" />
+
+                    <!-- Categories Grid -->
+                    <Grid Padding="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Category buttons -->
+                        <Button Text="RETAIL SHOP"
+                            BackgroundColor="White"
+                            TextColor="Black"
+                            ImageSource="map_store.png"
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            ContentLayout="Top, 0"
+                        />
+
+                        <Button Text="THEATER"
+                            BackgroundColor="White"
+                            TextColor="Black"
+                            ImageSource="theater.png"
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            ContentLayout="Top, 0"
+                        />
+
+                        <Button Text="RESTAURANT"
+                            ImageSource="restaurant.png"
+                            Grid.Row="0"
+                            Grid.Column="2"
+                            BackgroundColor="White"
+                            TextColor="Black"
+                            ContentLayout="Top, 0"
+                        />
+
+                        <Button Text="GAS"
+                            ImageSource="map_store.png"
+                            BackgroundColor="White"
+                            TextColor="Black"
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            ContentLayout="Top, 0"
+                        />
+
+                        <Button Text="SALON"
+                            ImageSource="salon.png"
+                            BackgroundColor="White"
+                            TextColor="Black"
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            ContentLayout="Top, 0"
+                        />
+
+                        <Button Text="GYM"
+                            ImageSource="gym.png"
+                            BackgroundColor="White"
+                            TextColor="Black"
+                            Grid.Row="1"
+                            Grid.Column="2"
+                            ContentLayout="Top, 0"
+                        />
+
+                        <Button Text="EVENT"
+                            ImageSource="events.png"
+                            BackgroundColor="White"
+                            TextColor="Black"
+                            Grid.Row="2"
+                            Grid.Column="0"
+                            ContentLayout="Top, 0"
+                        />
+
+                        <Button Text="BOOKSHOP"
+                            ImageSource="book.png"
+                            BackgroundColor="White"
+                            TextColor="Black"
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            ContentLayout="Top, 0"
+                        />
+
+                        <Button Text="CAFE"
+                            ImageSource="cafes.png"
+                            Grid.Row="2"
+                            BackgroundColor="White"
+                            TextColor="Black"
+                            Grid.Column="2"
+                            ContentLayout="Top, 0"
+                        />
+
+                    </Grid>
+
+                    <!-- Events Button -->
+                    <Button Text="Check for nearby Events"
+                        BackgroundColor="White"
+                        TextColor="Black"
+                        BorderWidth="1"
+                        CornerRadius="20"
+                        Padding="10,5" />
+                </StackLayout>
+            </ScrollView>
+        </Grid>
+    </Grid>
 </ContentPage>
