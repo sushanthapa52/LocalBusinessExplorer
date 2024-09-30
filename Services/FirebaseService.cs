@@ -13,11 +13,16 @@ namespace LocalBusinessExplorer.Services
     {
         private readonly IConfiguration _configuration;
         private readonly FirebaseAuthClient _authClient;
+        private readonly string _apiKey;
+
 
         public FirebaseService(IConfiguration configuration, FirebaseAuthClient authClient)
         {
             _configuration = configuration;
             _authClient = authClient;
+
+            _apiKey = _configuration.GetSection("Google")["ApiKey"];
+
         }
 
         public async Task<string> LoginWithEmailPassword(string email, string password)

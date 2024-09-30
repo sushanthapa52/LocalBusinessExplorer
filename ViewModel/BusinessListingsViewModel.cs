@@ -1,4 +1,5 @@
-﻿using MvvmHelpers;
+﻿using LocalBusinessExplorer.Services;
+using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -7,10 +8,22 @@ using System.Windows.Input;
 
 namespace LocalBusinessExplorer.ViewModel
 {
-    public class BusinessListingsViewModel : BaseViewModel, INotifyPropertyChanged, IQueryAttributable
+    public class BusinessListingsViewModel : INotifyPropertyChanged, IQueryAttributable
     {
 
         public ObservableCollection<Place> Places { get; set; } = new ObservableCollection<Place>();
+        private readonly IConfiguration _configuration;
+        private readonly string _apiKey;
+        private readonly GooglePlaceAPI _googleService;
+
+
+
+        public BusinessListingsViewModel(GooglePlaceAPI googleService)
+        {
+            _googleService = googleService;
+            _apiKey = _googleService.GetGoogleApiKey();
+
+        }
 
         private string _category;
         public string Category
@@ -19,7 +32,7 @@ namespace LocalBusinessExplorer.ViewModel
             set
             {
                 _category = value;
-                OnPropertyChanged();
+                OnPropertyChanged(nameof(Category));
             }
         }
 
@@ -58,7 +71,7 @@ namespace LocalBusinessExplorer.ViewModel
                 if (location != null)
                 {
                     // api key section
-                    var apiKey = "";
+                    var apiKey = _apiKey;
                     var url = $"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location={location.Latitude},{location.Longitude}&radius=5000&type={category_type}&key={apiKey}";
 
                     using (var httpClient = new HttpClient())
