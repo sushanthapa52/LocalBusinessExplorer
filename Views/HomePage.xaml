@@ -15,8 +15,7 @@
                 <!-- Back Button -->
                 <Button Text="&#x2190;"
                     FontSize="Large"
-                    BackgroundColor="White"
-                />
+                    BackgroundColor="White" />
 
                 <!-- Title -->
                 <Label Text="Local Business Explorer"
@@ -32,7 +31,6 @@
                     BackgroundColor="White"
                     Grid.Column="2" />
             </Grid>
-
 
             <!-- Map and categories section -->
             <ScrollView Grid.Row="2">
@@ -54,7 +52,7 @@
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
 
-                        <!-- Category buttons -->
+                        <!-- Category buttons with Click event handlers -->
                         <Button Text="RETAIL SHOP"
                             BackgroundColor="White"
                             TextColor="Black"
@@ -62,7 +60,8 @@
                             Grid.Row="0"
                             Grid.Column="0"
                             ContentLayout="Top, 0"
-                        />
+                            Clicked="OnCategoryButtonClicked"
+                            CommandParameter="retail" />
 
                         <Button Text="THEATER"
                             BackgroundColor="White"
@@ -71,7 +70,8 @@
                             Grid.Row="0"
                             Grid.Column="1"
                             ContentLayout="Top, 0"
-                        />
+                            Clicked="OnCategoryButtonClicked"
+                            CommandParameter="theater" />
 
                         <Button Text="RESTAURANT"
                             ImageSource="restaurant.png"
@@ -80,7 +80,8 @@
                             BackgroundColor="White"
                             TextColor="Black"
                             ContentLayout="Top, 0"
-                        />
+                            Clicked="OnCategoryButtonClicked"
+                            CommandParameter="restaurant" />
 
                         <Button Text="GAS"
                             ImageSource="map_store.png"
@@ -89,7 +90,8 @@
                             Grid.Row="1"
                             Grid.Column="0"
                             ContentLayout="Top, 0"
-                        />
+                            Clicked="OnCategoryButtonClicked"
+                            CommandParameter="gas_station" />
 
                         <Button Text="SALON"
                             ImageSource="salon.png"
@@ -98,7 +100,8 @@
                             Grid.Row="1"
                             Grid.Column="1"
                             ContentLayout="Top, 0"
-                        />
+                            Clicked="OnCategoryButtonClicked"
+                            CommandParameter="beauty_salon" />
 
                         <Button Text="GYM"
                             ImageSource="gym.png"
@@ -107,7 +110,8 @@
                             Grid.Row="1"
                             Grid.Column="2"
                             ContentLayout="Top, 0"
-                        />
+                            Clicked="OnCategoryButtonClicked"
+                            CommandParameter="gym" />
 
                         <Button Text="EVENT"
                             ImageSource="events.png"
@@ -116,7 +120,8 @@
                             Grid.Row="2"
                             Grid.Column="0"
                             ContentLayout="Top, 0"
-                        />
+                            Clicked="OnCategoryButtonClicked"
+                            CommandParameter="event" />
 
                         <Button Text="BOOKSHOP"
                             ImageSource="book.png"
@@ -125,7 +130,8 @@
                             Grid.Row="2"
                             Grid.Column="1"
                             ContentLayout="Top, 0"
-                        />
+                            Clicked="OnCategoryButtonClicked"
+                            CommandParameter="book_store" />
 
                         <Button Text="CAFE"
                             ImageSource="cafes.png"
@@ -134,17 +140,17 @@
                             TextColor="Black"
                             Grid.Column="2"
                             ContentLayout="Top, 0"
-                        />
-
+                            Clicked="OnCategoryButtonClicked"
+                            CommandParameter="cafe" />
                     </Grid>
-
-                    <!-- Events Button -->
                     <Button Text="Check for nearby Events"
-                        BackgroundColor="White"
-                        TextColor="Black"
-                        BorderWidth="1"
-                        CornerRadius="20"
-                        Padding="10,5" />
+                            BackgroundColor="White"
+                            TextColor="Black"
+                            BorderWidth="1"
+                            CornerRadius="20"
+                            Padding="10,5"
+                            Clicked="OnCategoryButtonClicked"
+                            CommandParameter="nearby events" />
                 </StackLayout>
             </ScrollView>
         </Grid>

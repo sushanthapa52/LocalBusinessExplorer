@@ -37,6 +37,10 @@ namespace LocalBusinessExplorer
                     new EmailProvider()
                     },
                 }));
+
+                // Load Google configuration
+                var googleConfig = config.GetSection("Google");
+                builder.Services.AddSingleton(googleConfig);
             }
 
             builder.Services.AddSingleton<FirebaseService>();
@@ -44,9 +48,12 @@ namespace LocalBusinessExplorer
             builder.Services.AddTransient<HomePage>();
             builder.Services.AddTransient<LoginViewModel>();
             builder.Services.AddTransient<SignUpPage>();
+            builder.Services.AddTransient<BusinessListingsPage>();
             builder.Services.AddTransient<SignUpViewModel>();
             
             builder.Services.AddTransient<HomePageViewModel>();
+            builder.Services.AddTransient<BusinessListingsViewModel>();
+            builder.Services.AddTransient<GooglePlaceAPI>();
 
 
 #if DEBUG
