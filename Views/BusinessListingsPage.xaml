@@ -3,11 +3,33 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LocalBusinessExplorer.Views.BusinessListingsPage"
              Title="BusinessListingsPage">
-    <StackLayout>
-        <ListView x:Name="BusinessListView" ItemsSource="{Binding Places}">
+    <StackLayout Padding="10">
+        <!-- ListView to display business listings -->
+        <ListView x:Name="BusinessListView" ItemsSource="{Binding Places}" HasUnevenRows="True">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <TextCell Text="{Binding Name}" Detail="{Binding Vicinity}" />
+                    <!-- Custom ViewCell Template for each item -->
+                    <ViewCell>
+                        <!-- Border to provide container with padding and border -->
+                        <Border Stroke="LightGray" StrokeThickness="1" Padding="10" Margin="5" BackgroundColor="White">
+                            <!-- Grid for structured layout -->
+                            <Grid RowDefinitions="Auto, Auto" ColumnDefinitions="Auto, *" Padding="10">
+
+                                <!-- Image for business logo or placeholder, now binding to the Icon property -->
+                                <Image Grid.RowSpan="2" WidthRequest="50" HeightRequest="50" Source="{Binding Icon}" />
+
+                                <!-- Business Name (Bold text) -->
+                                <Label Grid.Column="1" Text="{Binding Name}" FontAttributes="Bold" FontSize="16" />
+
+                                <!-- Vicinity (Business Location) -->
+                                <Label Grid.Row="1" Grid.Column="1" Text="{Binding Vicinity}" FontSize="12" TextColor="Gray" />
+
+                                <!-- Button to show directions -->
+                                <Button Grid.Row="1" Grid.Column="1" Text="Directions" Style="{StaticResource ButtonStyle}" HorizontalOptions="End" />
+
+                            </Grid>
+                        </Border>
+                    </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
