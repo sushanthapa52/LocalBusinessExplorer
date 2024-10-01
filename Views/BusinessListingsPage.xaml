@@ -24,8 +24,8 @@
                 <DataTemplate>
                     <!-- Custom ViewCell Template for each item -->
                     <ViewCell>
-                        <!-- Border to provide container with padding and border -->
-                        <Border Stroke="LightGray" StrokeThickness="1" Padding="10" Margin="5" BackgroundColor="White" >
+                        <!-- Frame to provide corner radius and shadow -->
+                        <Frame CornerRadius="10" Padding="10" Margin="5" BackgroundColor="White" BorderColor="LightGray" HasShadow="True">
                             <!-- Grid for structured layout -->
                             <Grid RowDefinitions="Auto, Auto, Auto" ColumnDefinitions="Auto, *" Padding="10">
 
@@ -46,27 +46,32 @@
                                 <Label Grid.Row="1" Grid.Column="1" Text="{Binding Vicinity}" FontSize="14" TextColor="Black" Padding="5"/>
 
                                 <!-- Button to show directions, placed in the third row -->
-                                <Frame Grid.Row="2" Grid.ColumnSpan="2" BorderColor="Black" CornerRadius="5" Padding="0" HasShadow="False">
-                                    <Grid BackgroundColor="White">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*" />
-                                            <ColumnDefinition Width="*" />
-                                        </Grid.ColumnDefinitions>
-                                        <Image Source="getdirection.png" WidthRequest="20" HeightRequest="20" Margin="0,0,2,0" Grid.Column="0" VerticalOptions="Center" />
-                                        <!-- Adjust the source and size of the icon -->
-                                        <Button Text="Directions" 
-                                                TextColor="Black"
-                                                HorizontalOptions="FillAndExpand" 
-                                                VerticalOptions="Center" 
-                                                BackgroundColor="Transparent" 
-                                                BorderWidth="0" 
-                                                Grid.Column="1" 
-                                                Margin="0"/>
-                                    </Grid>
+                                <Frame Grid.Row="2" Grid.ColumnSpan="2" Padding="2" HasShadow="False" BorderColor="Black">
+                                    <Border Stroke="White" StrokeThickness="2" Padding="5">
+                                        <Grid BackgroundColor="White">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+
+                                            <!-- Horizontal StackLayout to align icon and text side by side -->
+                                            <HorizontalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Spacing="5">
+                                                <Image Source="getdirection.png" 
+                                                       WidthRequest="20" 
+                                                       HeightRequest="20" 
+                                                       Margin="100,0,0,0"
+                                                       VerticalOptions="Center"/>
+                                                <Label Text="Directions" 
+                                                       TextColor="Black" 
+                                                       VerticalOptions="Center" />
+                                            </HorizontalStackLayout>
+                                        </Grid>
+                                    </Border>
                                 </Frame>
 
+
                             </Grid>
-                        </Border>
+                        </Frame>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
