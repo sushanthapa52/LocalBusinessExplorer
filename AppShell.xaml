@@ -20,6 +20,11 @@
      Route="SignUpPage" />
 
     <ShellContent
+    ContentTemplate="{DataTemplate local:BusinessListingsPage} " 
+    Route="BusinessListingsPage" />
+
+
+    <ShellContent
     ContentTemplate="{DataTemplate local:BusinessDetails}"
     Route="BusinessDetails" />
 

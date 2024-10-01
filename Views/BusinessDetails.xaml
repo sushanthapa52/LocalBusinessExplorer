@@ -13,7 +13,7 @@
              <Button Text="&#x2190;" 
                      Grid.Column="0" 
                      BackgroundColor="Transparent" 
-                     Clicked="OnBackButtonClicked"/>
+                     />
          </Grid>
 
          <CarouselView ItemsSource="{Binding Images}">
@@ -36,7 +36,7 @@
                          BackgroundColor="LightGray" 
                          BorderColor="Black" 
                          BorderWidth="1"
-                         Clicked="OnDirectionsButtonClicked"/>
+                         />
              </StackLayout>
          </Frame>
      </StackLayout>

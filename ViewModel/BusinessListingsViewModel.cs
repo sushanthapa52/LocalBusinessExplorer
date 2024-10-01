@@ -112,6 +112,9 @@ namespace LocalBusinessExplorer.ViewModel
         [JsonProperty("vicinity")]
         public string Vicinity { get; set; }
 
+        [JsonProperty("icon")]
+        public string Icon { get; set; }
+
         // Other fields can be added here based on what you need
     }
 
