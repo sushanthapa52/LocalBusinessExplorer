@@ -2,8 +2,22 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LocalBusinessExplorer.Views.BusinessListingsPage"
-             Title="BusinessListingsPage">
+             Title="">
     <StackLayout Padding="10">
+        <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" IsVisible="{Binding IsBusy}">
+            <ActivityIndicator IsRunning="{Binding IsBusy}" 
+                               Color="Black"
+                               VerticalOptions="CenterAndExpand"
+                               HorizontalOptions="CenterAndExpand" />
+
+            <!-- Loading Text -->
+            <Label Text="Loading businesses, please wait..."
+                   TextColor="Black"
+                   FontSize="Medium"
+                   VerticalOptions="CenterAndExpand"
+                   HorizontalOptions="CenterAndExpand" />
+        </StackLayout>
+
         <!-- ListView to display business listings -->
         <ListView x:Name="BusinessListView" ItemsSource="{Binding Places}" HasUnevenRows="True">
             <ListView.ItemTemplate>
@@ -11,21 +25,45 @@
                     <!-- Custom ViewCell Template for each item -->
                     <ViewCell>
                         <!-- Border to provide container with padding and border -->
-                        <Border Stroke="LightGray" StrokeThickness="1" Padding="10" Margin="5" BackgroundColor="White">
+                        <Border Stroke="LightGray" StrokeThickness="1" Padding="10" Margin="5" BackgroundColor="White" >
                             <!-- Grid for structured layout -->
-                            <Grid RowDefinitions="Auto, Auto" ColumnDefinitions="Auto, *" Padding="10">
+                            <Grid RowDefinitions="Auto, Auto, Auto" ColumnDefinitions="Auto, *" Padding="10">
 
-                                <!-- Image for business logo or placeholder, now binding to the Icon property -->
-                                <Image Grid.RowSpan="2" WidthRequest="50" HeightRequest="50" Source="{Binding Icon}" />
+                                <!-- Border for Icon -->
+                                <Border Stroke="Black" StrokeThickness="2" WidthRequest="50" HeightRequest="50" HorizontalOptions="Start" VerticalOptions="Center">
+                                    <Image Source="{Binding Icon}" 
+                                           Aspect="AspectFill" 
+                                           VerticalOptions="Center" 
+                                           HorizontalOptions="Center"
+                                           WidthRequest="50" 
+                                           HeightRequest="50" />
+                                </Border>
 
                                 <!-- Business Name (Bold text) -->
-                                <Label Grid.Column="1" Text="{Binding Name}" FontAttributes="Bold" FontSize="16" />
+                                <Label Grid.Column="1" Text="{Binding Name}" FontAttributes="Bold" FontSize="18" Margin="5" />
 
                                 <!-- Vicinity (Business Location) -->
-                                <Label Grid.Row="1" Grid.Column="1" Text="{Binding Vicinity}" FontSize="12" TextColor="Gray" />
+                                <Label Grid.Row="1" Grid.Column="1" Text="{Binding Vicinity}" FontSize="14" TextColor="Black" Padding="5"/>
 
-                                <!-- Button to show directions -->
-                                <Button Grid.Row="1" Grid.Column="1" Text="Directions" Style="{StaticResource ButtonStyle}" HorizontalOptions="End" />
+                                <!-- Button to show directions, placed in the third row -->
+                                <Frame Grid.Row="2" Grid.ColumnSpan="2" BorderColor="Black" CornerRadius="5" Padding="0" HasShadow="False">
+                                    <Grid BackgroundColor="White">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Image Source="getdirection.png" WidthRequest="20" HeightRequest="20" Margin="0,0,2,0" Grid.Column="0" VerticalOptions="Center" />
+                                        <!-- Adjust the source and size of the icon -->
+                                        <Button Text="Directions" 
+                                                TextColor="Black"
+                                                HorizontalOptions="FillAndExpand" 
+                                                VerticalOptions="Center" 
+                                                BackgroundColor="Transparent" 
+                                                BorderWidth="0" 
+                                                Grid.Column="1" 
+                                                Margin="0"/>
+                                    </Grid>
+                                </Frame>
 
                             </Grid>
                         </Border>

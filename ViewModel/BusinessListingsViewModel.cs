@@ -63,7 +63,7 @@ namespace LocalBusinessExplorer.ViewModel
 
         public async Task LoadBusinessesAsync(string category_type)
         {
-            IsBusy = true;
+            IsBusy = true;  // Start loading (show ActivityIndicator)
             try
             {
                 //var xyz = GetCurrentLocation();
