@@ -3,6 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LocalBusinessExplorer.Views.BusinessListingsPage"
              Title="">
+    <!-- Add a Navigation Bar with a Back Button -->
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="actionleft.png" 
+                     Command="{Binding BackCommand}"/>
+    </ContentPage.ToolbarItems>
     <StackLayout Padding="10">
         <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" IsVisible="{Binding IsBusy}">
             <ActivityIndicator IsRunning="{Binding IsBusy}" 

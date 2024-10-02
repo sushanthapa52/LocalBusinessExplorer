@@ -1,4 +1,5 @@
 ﻿using LocalBusinessExplorer.Services;
+using LocalBusinessExplorer.Views;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
@@ -16,6 +17,7 @@ namespace LocalBusinessExplorer.ViewModel
         private readonly string _apiKey;
         private readonly GooglePlaceAPI _googleService;
 
+        public ICommand BackCommand { get; }
 
 
         public BusinessListingsViewModel(GooglePlaceAPI googleService)
@@ -23,6 +25,12 @@ namespace LocalBusinessExplorer.ViewModel
             _googleService = googleService;
             _apiKey = _googleService.GetGoogleApiKey();
 
+            BackCommand = new Command(OnBackButtonClicked);
+
+        }
+        private async void OnBackButtonClicked()
+        {
+            await Shell.Current.GoToAsync("//HomePage");
         }
 
         private string _category;

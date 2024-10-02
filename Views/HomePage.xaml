@@ -13,16 +13,17 @@
 
                 <!-- Search Bar inside a Frame for black border and shadow -->
                 <Frame Grid.Row="0"
-           Grid.Column="1"
-           BorderColor="Black"         
-                    CornerRadius="5"
-                    HasShadow="True"
-                    Padding="0"
-                    Margin="10,0,0,0">
+                       Grid.Column="1"
+                       BorderColor="Black"         
+                        CornerRadius="5"
+                        HasShadow="True"
+                        Padding="0"
+                        Margin="10,0,0,0">
 
                     <SearchBar Placeholder="Search local businesses"
                    VerticalOptions="Center"
                    HorizontalOptions="FillAndExpand"
+                   SearchButtonPressed="OnCategoryButtonClicked"
                    HeightRequest="40"
                    BackgroundColor="White"  />
                 </Frame>

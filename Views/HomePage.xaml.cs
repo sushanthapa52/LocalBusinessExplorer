@@ -14,10 +14,20 @@ public partial class HomePage : ContentPage
     }
     private async void OnCategoryButtonClicked(object sender, EventArgs e)
     {
-        var button = sender as Button;
-        var categoryType = button.CommandParameter.ToString();
+        string commandParameter = string.Empty;
 
-        await Shell.Current.GoToAsync($"///{nameof(BusinessListingsPage)}?categoryType={categoryType}");
+        if (sender is Button button)
+        {
+            // This is a button click, so we get the command parameter from the button
+            commandParameter = button.CommandParameter?.ToString();
+        }
+        else if (sender is SearchBar searchBar)
+        {
+            // This is the search bar, so we get the search text
+            commandParameter = searchBar.Text;
+        }
+
+        await Shell.Current.GoToAsync($"///{nameof(BusinessListingsPage)}?categoryType={commandParameter}");
 
 
 
