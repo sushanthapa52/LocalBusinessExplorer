@@ -4,18 +4,22 @@
 
     <Grid>
         <!-- Top bar with navigation and title -->
-        <Grid RowDefinitions="Auto, Auto, *">
+        <Grid RowDefinitions="Auto, *">
             <Grid Padding="10" BackgroundColor="White" Row="0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
 
                 <!-- Back Button -->
-                <Button Text="&#x2190;"
-                    FontSize="Large"
-                    BackgroundColor="White" />
+                <Button Text=""
+                    BackgroundColor="White"
+                    ImageSource="left.png"
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    ContentLayout="Top, 0"
+                    Clicked="OnCategoryButtonClicked"
+                    CommandParameter="retail" />    
 
                 <!-- Title -->
                 <Label Text="Local Business Explorer"
@@ -26,10 +30,13 @@
                     HorizontalOptions="Center" />
 
                 <!-- Menu Button -->
+                
+                <!-- 
                 <Button Text="&#x2022;&#x2022;&#x2022;"
                     FontSize="Large"
                     BackgroundColor="White"
                     Grid.Column="2" />
+                -->
             </Grid>
 
             <!-- Map and categories section -->
@@ -143,14 +150,20 @@
                             Clicked="OnCategoryButtonClicked"
                             CommandParameter="cafe" />
                     </Grid>
-                    <Button Text="Check for nearby Events"
-                            BackgroundColor="White"
-                            TextColor="Black"
-                            BorderWidth="1"
-                            CornerRadius="20"
-                            Padding="10,5"
-                            Clicked="OnCategoryButtonClicked"
-                            CommandParameter="nearby events" />
+                    <Frame
+                        Padding="0,0,0,0"
+                        Margin="10"
+                        >
+                        <Button Text="Check Nearby Events"
+                             BackgroundColor="White"
+                             TextColor="Black"
+                             BorderWidth="1"
+                             CornerRadius="20"
+                             Padding="10,5"
+                             Clicked="OnCategoryButtonClicked"
+                             CommandParameter="nearby events" />
+                    </Frame>
+                   
                 </StackLayout>
             </ScrollView>
         </Grid>

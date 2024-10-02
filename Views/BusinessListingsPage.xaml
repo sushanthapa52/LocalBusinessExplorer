@@ -24,13 +24,13 @@
                 <DataTemplate>
                     <!-- Custom ViewCell Template for each item -->
                     <ViewCell>
-                        <!-- Frame to provide corner radius and shadow -->
-                        <Frame CornerRadius="10" Padding="10" Margin="5" BackgroundColor="White" BorderColor="LightGray" HasShadow="True">
+                        <!-- Border to provide container with padding and border -->
+                        <Border Stroke="LightGray" StrokeThickness="1" Padding="10" Margin="5" BackgroundColor="White" >
                             <!-- Grid for structured layout -->
                             <Grid RowDefinitions="Auto, Auto, Auto" ColumnDefinitions="Auto, *" Padding="10">
 
                                 <!-- Border for Icon -->
-                                <Border Stroke="Black" StrokeThickness="2" WidthRequest="50" HeightRequest="50" HorizontalOptions="Start" VerticalOptions="Center">
+                                <Border  WidthRequest="50" HeightRequest="50" HorizontalOptions="Start" VerticalOptions="Center">
                                     <Image Source="{Binding Icon}" 
                                            Aspect="AspectFill" 
                                            VerticalOptions="Center" 
@@ -40,38 +40,34 @@
                                 </Border>
 
                                 <!-- Business Name (Bold text) -->
-                                <Label Grid.Column="1" Text="{Binding Name}" FontAttributes="Bold" FontSize="18" Margin="5" />
+                                <Label Grid.Column="1" Text="{Binding Name}" FontAttributes="Bold" FontSize="18" Margin="5,0,0,0" />
 
                                 <!-- Vicinity (Business Location) -->
-                                <Label Grid.Row="1" Grid.Column="1" Text="{Binding Vicinity}" FontSize="14" TextColor="Black" Padding="5"/>
+                                <Label Grid.Row="1" Grid.Column="1" Text="{Binding Vicinity}" FontSize="14" Margin="5,0,0,0"  TextColor="Black" Padding="0,0,0,0"/>
 
                                 <!-- Button to show directions, placed in the third row -->
-                                <Frame Grid.Row="2" Grid.ColumnSpan="2" Padding="2" HasShadow="False" BorderColor="Black">
-                                    <Border Stroke="White" StrokeThickness="2" Padding="5">
-                                        <Grid BackgroundColor="White">
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="Auto" />
-                                                <ColumnDefinition Width="*" />
-                                            </Grid.ColumnDefinitions>
+                                <Frame Grid.Row="2" Grid.ColumnSpan="2" BorderColor="Black" Padding="0" HasShadow="False">
+                                    <Grid BackgroundColor="White">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <!-- Adjust width to auto for a closer fit -->
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Image Source="getdirection.png" WidthRequest="20" HeightRequest="20" Margin="100,0,0,0" Grid.Column="0" />
+                                        <!-- Reduced margin -->
 
-                                            <!-- Horizontal StackLayout to align icon and text side by side -->
-                                            <HorizontalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Spacing="5">
-                                                <Image Source="getdirection.png" 
-                                                       WidthRequest="20" 
-                                                       HeightRequest="20" 
-                                                       Margin="100,0,0,0"
-                                                       VerticalOptions="Center"/>
-                                                <Label Text="Directions" 
-                                                       TextColor="Black" 
-                                                       VerticalOptions="Center" />
-                                            </HorizontalStackLayout>
-                                        </Grid>
-                                    </Border>
+                                        <Button Text="Directions"
+                                                TextColor="Black"
+                                                BackgroundColor="Transparent"
+                                                BorderWidth="0"
+                                                Grid.Column="1"
+                                                HorizontalOptions="Start" 
+                                            Margin="0,0,5,0"/>
+                                    </Grid>
                                 </Frame>
 
-
                             </Grid>
-                        </Frame>
+                        </Border>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
