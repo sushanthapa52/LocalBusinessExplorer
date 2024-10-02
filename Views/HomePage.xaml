@@ -5,40 +5,28 @@
     <Grid>
         <!-- Top bar with navigation and title -->
         <Grid RowDefinitions="Auto, *">
-            <Grid Padding="10" BackgroundColor="White" Row="0">
+            <Grid Padding="10" BackgroundColor="White" Row="0" >
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
 
-                <!-- Back Button -->
-                <Button Text=""
-                    BackgroundColor="White"
-                    ImageSource="left.png"
-                    Grid.Row="0"
-                    Grid.Column="0"
-                    ContentLayout="Top, 0"
-                    Clicked="OnCategoryButtonClicked"
-                    CommandParameter="retail" />    
+                <!-- Search Bar inside a Frame for black border and shadow -->
+                <Frame Grid.Row="0"
+           Grid.Column="1"
+           BorderColor="Black"         
+                    CornerRadius="5"
+                    HasShadow="True"
+                    Padding="0"
+                    Margin="10,0,0,0">
 
-                <!-- Title -->
-                <Label Text="Local Business Explorer"
-                    FontSize="Medium"
-                    FontAttributes="Bold"
-                    VerticalOptions="Center"
-                    Grid.Column="1"
-                    HorizontalOptions="Center" />
-
-                <!-- Menu Button -->
-                
-                <!-- 
-                <Button Text="&#x2022;&#x2022;&#x2022;"
-                    FontSize="Large"
-                    BackgroundColor="White"
-                    Grid.Column="2" />
-                -->
+                    <SearchBar Placeholder="Search local businesses"
+                   VerticalOptions="Center"
+                   HorizontalOptions="FillAndExpand"
+                   HeightRequest="40"
+                   BackgroundColor="White"  />
+                </Frame>
             </Grid>
-
             <!-- Map and categories section -->
             <ScrollView Grid.Row="2">
                 <StackLayout Spacing="10">

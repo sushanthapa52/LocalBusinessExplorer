@@ -9,7 +9,13 @@
                    HorizontalOptions="Center" />
 
         <!-- Email Entry -->
-        <Entry x:Name="emailEntry"
+        <Frame CornerRadius="10"
+                   BorderColor="Gray"
+                   HasShadow="False"
+                   Padding="10"
+                   Margin="10"
+                   HeightRequest="60">
+            <Entry x:Name="emailEntry"
                    Placeholder="Email"
                    Keyboard="Email"
                    HeightRequest="50"
@@ -17,10 +23,17 @@
                    PlaceholderColor="Gray"
                    Margin="10"
                   Text="{Binding Email}"/>
+        </Frame>
 
         <!-- Password Entry -->
-        <Grid>
-            <Entry x:Name="passwordEntry"
+        <Frame CornerRadius="10"
+                   BorderColor="Gray"
+                   HasShadow="False"
+                   Padding="10"
+                   Margin="10"
+                   HeightRequest="60">
+            <Grid>
+                <Entry x:Name="passwordEntry"
                        Placeholder="Password"
                        IsPassword="True"
                        HeightRequest="50"
@@ -28,14 +41,14 @@
                        PlaceholderColor="Gray"
                        Margin="10"
                        Text="{Binding Password}"/>
-            <ImageButton Source="eye.png"
+                <ImageButton Source="eye.png"
                              HeightRequest="25"
-                             WidthRequest="25"
+                             WidthRequest="50"
                              HorizontalOptions="End"
                              VerticalOptions="Center"
                              BackgroundColor="Transparent"/>
-        </Grid>
-
+            </Grid>
+        </Frame>
         <!-- Sign In Button -->
         <Button Text="Sign In"
                     HeightRequest="50"
