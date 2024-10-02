@@ -4,13 +4,21 @@
              x:Class="LocalBusinessExplorer.Views.LoginPage">
     <VerticalStackLayout>
         <!-- Image Section -->
-        <Image Source="app_icon.png"
-                   HeightRequest="200"
-                   HorizontalOptions="Center" />
+        <Frame
+            BackgroundColor="WhiteSmoke"
+            Background="White"
+            BorderColor="White"
+            Padding="80"
+            >
+            <Image Source="app_icon.png"
+           HeightRequest="200"
+           HorizontalOptions="Center" />
+        </Frame>
+        
 
         <!-- Email Entry -->
         <Frame CornerRadius="10"
-                   BorderColor="Gray"
+                   BorderColor="Black"
                    HasShadow="False"
                    Padding="10"
                    Margin="10"
@@ -27,7 +35,7 @@
 
         <!-- Password Entry -->
         <Frame CornerRadius="10"
-                   BorderColor="Gray"
+                   BorderColor="Black"
                    HasShadow="False"
                    Padding="10"
                    Margin="10"

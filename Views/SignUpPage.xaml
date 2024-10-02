@@ -5,11 +5,18 @@
     <VerticalStackLayout >
 
         <!-- Image Section -->
-        <Image Source="app_icon.png"
-               HeightRequest="200"
-               HorizontalOptions="Center" />
+        <Frame
+            BackgroundColor="WhiteSmoke"
+            Background="White"
+            BorderColor="White"
+            Padding="80"
+    >
+            <Image Source="app_icon.png"
+   HeightRequest="200"
+   HorizontalOptions="Center" />
+        </Frame>
         <Frame CornerRadius="10"
-                   BorderColor="Gray"
+                   BorderColor="Black"
                    HasShadow="False"
                    Padding="10"
                    Margin="10"
@@ -26,7 +33,7 @@
 
         <!-- Password Entry -->
         <Frame CornerRadius="10"
-                   BorderColor="Gray"
+                   BorderColor="Black"
                    HasShadow="False"
                    Padding="10"
                    Margin="10"
@@ -39,9 +46,9 @@
                    TextColor="Black"
                    PlaceholderColor="Gray"
                    Text="{Binding Password}" />
-                <ImageButton Source="eye_i.png"
+                <ImageButton Source="eye.png"
                          HeightRequest="25"
-                         WidthRequest="25"
+                         WidthRequest="40"
                          HorizontalOptions="End"
                          VerticalOptions="Center"
                          BackgroundColor="Transparent" />
@@ -50,7 +57,7 @@
 
         <!-- Confirm Password Entry -->
         <Frame CornerRadius="10"
-                   BorderColor="Gray"
+                   BorderColor="Black"
                    HasShadow="False"
                    Padding="10"
                    Margin="10"
@@ -63,9 +70,9 @@
                    TextColor="Black"
                    PlaceholderColor="Gray"
                    Text="{Binding ConfirmPassword}" />
-                <ImageButton Source="eye_i.png"
+                <ImageButton Source="eye.png"
                          HeightRequest="25"
-                         WidthRequest="25"
+                         WidthRequest="40"
                          HorizontalOptions="End"
                          VerticalOptions="Center"
                          BackgroundColor="Transparent" />
