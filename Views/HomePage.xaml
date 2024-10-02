@@ -2,147 +2,196 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="LocalBusinessExplorer.Views.HomePage">
 
-    <Grid>
-        <!-- Top bar with navigation and title -->
-        <Grid RowDefinitions="Auto, *">
-            <Grid Padding="10" BackgroundColor="White" Row="0" >
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
+	<Grid>
+		<!-- Top bar with navigation and title -->
+		<Grid RowDefinitions="Auto, *">
+			<Grid Padding="10" BackgroundColor="White" Row="0" >
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="Auto" />
+					<ColumnDefinition Width="*" />
+				</Grid.ColumnDefinitions>
 
-                <!-- Search Bar inside a Frame for black border and shadow -->
-                <Frame Grid.Row="0"
-           Grid.Column="1"
-           BorderColor="Black"         
-                    CornerRadius="5"
-                    HasShadow="True"
-                    Padding="0"
-                    Margin="10,0,0,0">
+				<!-- Search Bar inside a Frame for black border and shadow -->
+				<Frame  Grid.Row="0"
+                        Grid.Column="1"
+                        BorderColor="Black"
+                        CornerRadius="5"
+                        HasShadow="True"
+                        Padding="0"
+                        Margin="10,0,0,0">
 
-                    <SearchBar Placeholder="Search local businesses"
-                   VerticalOptions="Center"
-                   HorizontalOptions="FillAndExpand"
-                   HeightRequest="40"
-                   BackgroundColor="White"  />
-                </Frame>
-            </Grid>
-            <!-- Map and categories section -->
-            <ScrollView Grid.Row="2">
-                <StackLayout Spacing="10">
-                    <!-- Map Image or Control -->
-                    <Image Source="map.png"
+					<SearchBar Placeholder="Search local businesses"
+                       VerticalOptions="Center"
+                       HorizontalOptions="FillAndExpand"
+                       HeightRequest="40"
+                       BackgroundColor="White"  />
+				</Frame>
+			</Grid>
+
+			<!-- Map and categories section -->
+			<ScrollView Grid.Row="2">
+				<StackLayout Spacing="10">
+					<!-- Map Image or Control -->
+					<Image Source="map.png"
                         HeightRequest="200" />
 
-                    <!-- Categories Grid -->
-                    <Grid Padding="10">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
+					<!-- Categories Grid -->
+					<Grid Padding="10" >
+						<Grid.RowDefinitions>
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="Auto" />
+						</Grid.RowDefinitions>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="*" />
+							<ColumnDefinition Width="*" />
+							<ColumnDefinition Width="*" />
+						</Grid.ColumnDefinitions>
 
-                        <!-- Category buttons with Click event handlers -->
-                        <Button Text="RETAIL SHOP"
-                            BackgroundColor="White"
-                            TextColor="Black"
-                            ImageSource="map_store.png"
-                            Grid.Row="0"
-                            Grid.Column="0"
-                            ContentLayout="Top, 0"
-                            Clicked="OnCategoryButtonClicked"
-                            CommandParameter="retail" />
+						<!-- Category buttons with Card View -->
+						<Frame Grid.Row="0" Grid.Column="0"
+                               Padding="0"
+                               CornerRadius="10"
+                               HasShadow="True"
+                               BorderColor="Gray"
+                               Margin="5">
+							<Button Text="RETAIL SHOP"
+                                BackgroundColor="White"
+                                TextColor="Black"
+                                ImageSource="map_store.png"
+                                ContentLayout="Top, 0"
+                                Clicked="OnCategoryButtonClicked"
+                                CommandParameter="retail" />
+						</Frame>
 
-                        <Button Text="THEATER"
-                            BackgroundColor="White"
-                            TextColor="Black"
-                            ImageSource="theater.png"
-                            Grid.Row="0"
-                            Grid.Column="1"
-                            ContentLayout="Top, 0"
-                            Clicked="OnCategoryButtonClicked"
-                            CommandParameter="theater" />
+						<Frame Grid.Row="0" Grid.Column="1"
+                               Padding="0"
+                               CornerRadius="10"
+                               HasShadow="True"
+                               BorderColor="Gray"
+                               Margin="5">
+							<Button Text="THEATER"
+                                BackgroundColor="White"
+                                TextColor="Black"
+                                ImageSource="theater.png"
+                                ContentLayout="Top, 0"
+                                Clicked="OnCategoryButtonClicked"
+                                CommandParameter="theater" />
+						</Frame>
 
-                        <Button Text="RESTAURANT"
-                            ImageSource="restaurant.png"
-                            Grid.Row="0"
-                            Grid.Column="2"
-                            BackgroundColor="White"
-                            TextColor="Black"
-                            ContentLayout="Top, 0"
-                            Clicked="OnCategoryButtonClicked"
-                            CommandParameter="restaurant" />
+						<Frame Grid.Row="0" Grid.Column="2"
+                               Padding="0"
+                               CornerRadius="10"
+                               HasShadow="True"
+                               BorderColor="Gray"
+                               Margin="5">
+							<Button Text="RESTAURANT"
+                                ImageSource="restaurant.png"
+                                BackgroundColor="White"
+                                TextColor="Black"
+                                ContentLayout="Top, 0"
+                                Clicked="OnCategoryButtonClicked"
+                                CommandParameter="restaurant" />
+						</Frame>
 
-                        <Button Text="GAS"
-                            ImageSource="map_store.png"
-                            BackgroundColor="White"
-                            TextColor="Black"
-                            Grid.Row="1"
-                            Grid.Column="0"
-                            ContentLayout="Top, 0"
-                            Clicked="OnCategoryButtonClicked"
-                            CommandParameter="gas_station" />
+						<Frame Grid.Row="1" Grid.Column="0"
+                               Padding="0"
+                               CornerRadius="10"
+                               HasShadow="True"
+                               BorderColor="Gray"
+                               Margin="5">
+							<Button Text="GAS"
+                                ImageSource="map_store.png"
+                                BackgroundColor="White"
+                                TextColor="Black"
+                                ContentLayout="Top, 0"
+                                Clicked="OnCategoryButtonClicked"
+                                CommandParameter="gas_station" />
+						</Frame>
 
-                        <Button Text="SALON"
-                            ImageSource="salon.png"
-                            BackgroundColor="White"
-                            TextColor="Black"
-                            Grid.Row="1"
-                            Grid.Column="1"
-                            ContentLayout="Top, 0"
-                            Clicked="OnCategoryButtonClicked"
-                            CommandParameter="beauty_salon" />
+						<Frame Grid.Row="1" Grid.Column="1"
+                               Padding="0"
+                               CornerRadius="10"
+                               HasShadow="True"
+                               BorderColor="Gray"
+                               Margin="5">
+							<Button Text="SALON"
+                                ImageSource="salon.png"
+                                BackgroundColor="White"
+                                TextColor="Black"
+                                ContentLayout="Top, 0"
+                                Clicked="OnCategoryButtonClicked"
+                                CommandParameter="beauty_salon" />
+						</Frame>
 
-                        <Button Text="GYM"
-                            ImageSource="gym.png"
-                            BackgroundColor="White"
-                            TextColor="Black"
-                            Grid.Row="1"
-                            Grid.Column="2"
-                            ContentLayout="Top, 0"
-                            Clicked="OnCategoryButtonClicked"
-                            CommandParameter="gym" />
+						<Frame Grid.Row="1" Grid.Column="2"
+                               Padding="0"
+                               CornerRadius="10"
+                               HasShadow="True"
+                               BorderColor="Gray"
+                               Margin="5">
+							<Button Text="GYM"
+                                ImageSource="gym.png"
+                                BackgroundColor="White"
+                                TextColor="Black"
+                                ContentLayout="Top, 0"
+                                Clicked="OnCategoryButtonClicked"
+                                CommandParameter="gym" />
+						</Frame>
 
-                        <Button Text="EVENT"
-                            ImageSource="events.png"
-                            BackgroundColor="White"
-                            TextColor="Black"
-                            Grid.Row="2"
-                            Grid.Column="0"
-                            ContentLayout="Top, 0"
-                            Clicked="OnCategoryButtonClicked"
-                            CommandParameter="event" />
+						<Frame Grid.Row="2" Grid.Column="0"
+                               Padding="0"
+                               CornerRadius="10"
+                               HasShadow="True"
+                               BorderColor="Gray"
+                               Margin="5">
+							<Button Text="EVENT"
+                                ImageSource="events.png"
+                                BackgroundColor="White"
+                                TextColor="Black"
+                                ContentLayout="Top, 0"
+                                Clicked="OnCategoryButtonClicked"
+                                CommandParameter="event" />
+						</Frame>
 
-                        <Button Text="BOOKSHOP"
-                            ImageSource="book.png"
-                            BackgroundColor="White"
-                            TextColor="Black"
-                            Grid.Row="2"
-                            Grid.Column="1"
-                            ContentLayout="Top, 0"
-                            Clicked="OnCategoryButtonClicked"
-                            CommandParameter="book_store" />
+						<Frame Grid.Row="2" Grid.Column="1"
+                               Padding="0"
+                               CornerRadius="10"
+                               HasShadow="True"
+                               BorderColor="Gray"
+                               Margin="5">
+							<Button Text="BOOKSHOP"
+                                ImageSource="book.png"
+                                BackgroundColor="White"
+                                TextColor="Black"
+                                ContentLayout="Top, 0"
+                                Clicked="OnCategoryButtonClicked"
+                                CommandParameter="book_store" />
+						</Frame>
 
-                        <Button Text="CAFE"
-                            ImageSource="cafes.png"
-                            Grid.Row="2"
-                            BackgroundColor="White"
-                            TextColor="Black"
-                            Grid.Column="2"
-                            ContentLayout="Top, 0"
-                            Clicked="OnCategoryButtonClicked"
-                            CommandParameter="cafe" />
-                    </Grid>
-                    <Frame
-                        Padding="0,0,0,0"
-                        Margin="10"
-                        >
-                        <Button Text="Check Nearby Events"
+						<Frame Grid.Row="2" Grid.Column="2"
+                               Padding="0"
+                               CornerRadius="10"
+                               HasShadow="True"
+                               BorderColor="Gray"
+                               Margin="5">
+							<Button Text="CAFE"
+                                ImageSource="cafes.png"
+                                BackgroundColor="White"
+                                TextColor="Black"
+                                ContentLayout="Top, 0"
+                                Clicked="OnCategoryButtonClicked"
+                                CommandParameter="cafe" />
+						</Frame>
+					</Grid>
+
+					<!-- Nearby events button -->
+					<Frame Padding="0,0,0,0"
+                           Margin="10"
+                           CornerRadius="20"
+                           HasShadow="True"
+                           BorderColor="Gray">
+						<Button Text="Check Nearby Events"
                              BackgroundColor="White"
                              TextColor="Black"
                              BorderWidth="1"
@@ -150,10 +199,9 @@
                              Padding="10,5"
                              Clicked="OnCategoryButtonClicked"
                              CommandParameter="nearby events" />
-                    </Frame>
-                   
-                </StackLayout>
-            </ScrollView>
-        </Grid>
-    </Grid>
+					</Frame>
+				</StackLayout>
+			</ScrollView>
+		</Grid>
+	</Grid>
 </ContentPage>
