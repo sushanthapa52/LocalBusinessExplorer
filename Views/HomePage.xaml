@@ -1,5 +1,6 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:maps="clr-namespace:Microsoft.Maui.Controls.Maps;assembly=Microsoft.Maui.Controls.Maps"
     x:Class="LocalBusinessExplorer.Views.HomePage">
 
 	<Grid>
@@ -7,13 +8,13 @@
 		<Grid RowDefinitions="Auto, *">
 			<Grid Padding="10" BackgroundColor="White" Row="0" >
 				<Grid.ColumnDefinitions>
-					<ColumnDefinition Width="Auto" />
 					<ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
 				</Grid.ColumnDefinitions>
 
 				<!-- Search Bar inside a Frame for black border and shadow -->
 				<Frame  Grid.Row="0"
-                        Grid.Column="1"
+                        Grid.Column="0"
                         BorderColor="Black"
                         CornerRadius="5"
                         HasShadow="True"
@@ -28,17 +29,24 @@
                       SearchButtonPressed="OnCategoryButtonClicked"
 />
 				</Frame>
+
+                <Button Grid.Column="1" Text="settings" Margin="5">
+                </Button>   
+
 			</Grid>
 
 			<!-- Map and categories section -->
-			<ScrollView Grid.Row="2">
-				<StackLayout Spacing="10">
+			<ScrollView Grid.Row="1">
+				<StackLayout Spacing="50">
 					<!-- Map Image or Control -->
-					<Image Source="map.png"
-                        HeightRequest="200" />
+                    <maps:Map x:Name="MyMap"
+                              HeightRequest="200"
+                              MapType="Street"
+                              IsShowingUser="True"
+                              Margin="0"/>
 
-					<!-- Categories Grid -->
-					<Grid Padding="10" >
+                    <!-- Categories Grid -->
+					<Grid>
 						<Grid.RowDefinitions>
 							<RowDefinition Height="Auto" />
 							<RowDefinition Height="Auto" />
