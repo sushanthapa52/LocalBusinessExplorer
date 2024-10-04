@@ -30,10 +30,14 @@
 />
 				</Frame>
 
-                <Button Grid.Column="1" Text="settings" Margin="5">
-                </Button>   
+                    <!-- ImageButton for settings icon -->
+                    <ImageButton Grid.Column="1"
+                             Source="hamburger.png" 
+                              HeightRequest="25"
+                              WidthRequest="25"
+                             Margin="5"/>
 
-			</Grid>
+            </Grid>
 
 			<!-- Map and categories section -->
 			<ScrollView Grid.Row="1">
