@@ -211,8 +211,8 @@
                              BorderWidth="1"
                              CornerRadius="20"
                              Padding="10,5"
-                             Clicked="OnCategoryButtonClicked"
-                             CommandParameter="nearby events" />
+                             Clicked="OnFetchEventsAsyncClicked"
+                              />
 					</Frame>
 				</StackLayout>
 			</ScrollView>

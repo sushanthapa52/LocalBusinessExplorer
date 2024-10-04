@@ -28,4 +28,8 @@
     ContentTemplate="{DataTemplate local:BusinessDetails}"
     Route="BusinessDetails" />
 
+    <ShellContent
+    ContentTemplate="{DataTemplate local:EventsPage}"
+    Route="EventsPage" />
+
 </Shell>

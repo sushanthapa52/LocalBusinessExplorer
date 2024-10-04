@@ -56,6 +56,9 @@ namespace LocalBusinessExplorer
             builder.Services.AddTransient<BusinessListingsViewModel>();
             builder.Services.AddTransient<GooglePlaceAPI>();
             builder.Services.AddTransient<BusinessDetails>();
+
+            //builder.Services.AddTransient<EventsViewModel>();
+            builder.Services.AddTransient<EventsPage>();
             
 
 #if DEBUG
