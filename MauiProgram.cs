@@ -6,6 +6,7 @@ using LocalBusinessExplorer.Views;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using System.Reflection;
+using LocalBusinessExplorer.Entities;
 
 namespace LocalBusinessExplorer
 {
@@ -43,6 +44,7 @@ namespace LocalBusinessExplorer
                 var googleConfig = config.GetSection("Google");
                 builder.Services.AddSingleton(googleConfig);
             }
+            builder.Services.AddSingleton<EventDataService>();
 
             builder.Services.AddSingleton<FirebaseService>();
             builder.Services.AddTransient<LoginPage>();
@@ -54,11 +56,15 @@ namespace LocalBusinessExplorer
             
             builder.Services.AddTransient<HomePageViewModel>();
             builder.Services.AddTransient<BusinessListingsViewModel>();
+            builder.Services.AddTransient<EventsPagetViewModel>();
+
             builder.Services.AddTransient<GooglePlaceAPI>();
             builder.Services.AddTransient<BusinessDetails>();
 
             //builder.Services.AddTransient<EventsViewModel>();
             builder.Services.AddTransient<EventsPage>();
+            builder.Services.AddTransient<FirebaseDb>();
+
             
 
 #if DEBUG

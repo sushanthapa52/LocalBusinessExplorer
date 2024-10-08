@@ -77,6 +77,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="FirebaseAuthentication.net" Version="4.1.0" />
+		<PackageReference Include="FirebaseDatabase.net" Version="4.2.0" />
 		<PackageReference Include="google-search-results-dotnet" Version="2.0.1" />
 		<PackageReference Include="Microsoft.AspNet.WebApi" Version="5.3.0" />
 		<PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />

@@ -14,4 +14,9 @@ public partial class BusinessListingsPage : ContentPage
         BindingContext = _viewModel;
 
     }
+    private async void OnTitleTapped(object sender, EventArgs e)
+    {
+
+        await Shell.Current.GoToAsync($"///{nameof(HomePage)}");
+    }
 }

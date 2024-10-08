@@ -2,13 +2,53 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LocalBusinessExplorer.Views.EventsPage"
-             Title="EventsPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+             BackgroundColor="White">
 
-     
-    </VerticalStackLayout>
+    <ContentPage.Resources>
+        <Style TargetType="Label">
+            <Setter Property="TextColor" Value="Black"/>
+        </Style>
+        <Style TargetType="StackLayout">
+            <Setter Property="BackgroundColor" Value="Transparent"/>
+        </Style>
+        <Style TargetType="CollectionView">
+            <Setter Property="BackgroundColor" Value="Transparent"/>
+        </Style>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <StackLayout>
+
+            <Label Text="Back"
+                   FontSize="18"
+                   FontAttributes="None"
+                   HorizontalOptions="Start">
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnTitleTapped" />
+            </Label.GestureRecognizers>
+        </Label>
+
+        <CollectionView ItemsSource="{Binding Events}" VerticalOptions="FillAndExpand" 
+                        HorizontalOptions="FillAndExpand">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame Padding="0" Margin="10" CornerRadius="10" 
+                           BackgroundColor="White" HasShadow="True">
+                        <StackLayout Padding="15">
+                            <Label Text="{Binding Title}" FontSize="18" FontAttributes="Bold" />
+                            <Label Text="{Binding StartDate}" FontSize="16" />
+                            <Label Text="{Binding Address}" FontSize="16" />
+                        </StackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+            <CollectionView.EmptyView>
+                <Label Text="No events available" 
+                       HorizontalOptions="Center" VerticalOptions="Center" 
+                       FontSize="16" TextColor="Gray"/>
+            </CollectionView.EmptyView>
+        </CollectionView>
+                    </StackLayout>
+
+    </ContentPage.Content>
 </ContentPage>
