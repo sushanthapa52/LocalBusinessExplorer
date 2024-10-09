@@ -18,8 +18,8 @@ namespace LocalBusinessExplorer.Services
         // Fetch events from Firebase Realtime Database
         public async Task<List<EventResult>>  EventResults()
          {
-            var firebaseUrl = "https://lbecapstone-default-rtdb.firebaseio.com/"; // Replace with your Firebase Realtime Database URL
-            var firebaseAuth = "AIzaSyDPpT0BibZkokcLeDYf_J5kocRyNbuhVC4"; // Replace with your Firebase Database secret (or use the API key if enabled)
+            var firebaseUrl = "https://lbecapstone-default-rtdb.firebaseio.com/"; 
+            var firebaseAuth = "AIzaSyDPpT0BibZkokcLeDYf_J5kocRyNbuhVC4";
             var firebaseClient = new FirebaseClient(
                 firebaseUrl,
                 new FirebaseOptions

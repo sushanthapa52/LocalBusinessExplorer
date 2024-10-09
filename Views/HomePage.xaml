@@ -27,6 +27,7 @@
                        HeightRequest="40"
                        BackgroundColor="White"
                       SearchButtonPressed="OnCategoryButtonClicked"
+					    Text="{Binding SearchText}"
 />
 				</Frame>
 
