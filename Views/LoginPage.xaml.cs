@@ -1,3 +1,4 @@
+using Firebase.Auth;
 using LocalBusinessExplorer.ViewModel;
 
 namespace LocalBusinessExplorer.Views;
@@ -17,7 +18,33 @@ public partial class LoginPage : ContentPage
     {
         var email = emailEntry.Text;
         var password = passwordEntry.Text;
-        await _viewModel.Login(email, password);
+
+        // Validate email format
+        if (string.IsNullOrWhiteSpace(email))
+        {
+            await DisplayAlert("Error", "Please enter a valid email address.", "OK");
+            return;
+
+        }
+
+        // Validate password length
+        if (string.IsNullOrWhiteSpace(password)) // Adjust length as necessary
+        {
+            await DisplayAlert("Error", "Password shoud not be empty.", "OK");
+            return;
+        }
+        var token = await _viewModel.Login(email, password);
+
+        if (token is null)
+        {
+            await DisplayAlert("Error", "Login failed. Please sign up first.", "OK");
+            return;
+
+        }
+       
+        await Shell.Current.GoToAsync($"///{nameof(HomePage)}?token={token}");
+
+
     }
 
     private async void OnSignUpClicked(object sender, EventArgs e)

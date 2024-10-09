@@ -50,10 +50,13 @@ namespace LocalBusinessExplorer.ViewModel
                 OnPropertyChanged();
             }
         }
-        public async Task Login(string Email, string Password)
+        public Task<string> Login(string Email, string Password)
         {
-            var token = await _firebaseService.LoginWithEmailPassword(Email, Password);
-            await Shell.Current.GoToAsync($"///{nameof(HomePage)}?token={token}");
+            var token =  _firebaseService.LoginWithEmailPassword(Email, Password);
+
+            return token;
+            
+
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

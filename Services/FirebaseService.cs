@@ -31,10 +31,8 @@ namespace LocalBusinessExplorer.Services
             try
             {
                 var userCredential = await _authClient.SignInWithEmailAndPasswordAsync(email, password);
-                //var userID = userCredential.User.Uid;
 
                 return userCredential.User.Uid;
-                //return userCredential.User?.GetIdTokenAsync().ToString();
             }
             catch (Exception ex)
             {
