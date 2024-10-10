@@ -45,7 +45,6 @@ namespace LocalBusinessExplorer
                 builder.Services.AddSingleton(googleConfig);
             }
             builder.Services.AddSingleton<EventDataService>();
-
             builder.Services.AddSingleton<FirebaseService>();
             builder.Services.AddTransient<LoginPage>();
             builder.Services.AddTransient<HomePage>();
