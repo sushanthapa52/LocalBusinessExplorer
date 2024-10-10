@@ -16,39 +16,74 @@
         </Style>
     </ContentPage.Resources>
 
-    <ContentPage.Content>
-        <StackLayout>
+    <!-- Main content layout -->
+    <Grid>
+        <!-- Content of the EventsPage -->
+        <StackLayout Grid.Row="0" Padding="10">
 
-            <Label Text="Back"
-                   FontSize="18"
-                   FontAttributes="None"
-                   HorizontalOptions="Start">
-            <Label.GestureRecognizers>
-                <TapGestureRecognizer Tapped="OnTitleTapped" />
-            </Label.GestureRecognizers>
-        </Label>
 
-        <CollectionView ItemsSource="{Binding Events}" VerticalOptions="FillAndExpand" 
-                        HorizontalOptions="FillAndExpand">
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <Frame Padding="0" Margin="10" CornerRadius="10" 
-                           BackgroundColor="White" HasShadow="True">
-                        <StackLayout Padding="15">
-                            <Label Text="{Binding Title}" FontSize="18" FontAttributes="Bold" />
-                            <Label Text="{Binding StartDate}" FontSize="16" />
-                            <Label Text="{Binding Address}" FontSize="16" />
-                        </StackLayout>
-                    </Frame>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-            <CollectionView.EmptyView>
-                <Label Text="No events available" 
-                       HorizontalOptions="Center" VerticalOptions="Center" 
-                       FontSize="16" TextColor="Gray"/>
-            </CollectionView.EmptyView>
-        </CollectionView>
-                    </StackLayout>
 
-    </ContentPage.Content>
+            <!-- CollectionView for displaying events -->
+            <CollectionView ItemsSource="{Binding Events}" VerticalOptions="FillAndExpand" 
+                            HorizontalOptions="FillAndExpand">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Padding="0" Margin="10" CornerRadius="10" 
+                               BackgroundColor="White" HasShadow="True">
+                            <StackLayout Padding="15">
+                                <Label Text="{Binding Title}" FontSize="18" FontAttributes="Bold" />
+                                <Label Text="{Binding StartDate}" FontSize="16" />
+                                <Label Text="{Binding Address}" FontSize="16" />
+                            </StackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+                <CollectionView.EmptyView>
+                    <Label Text="No events available" 
+                           HorizontalOptions="Center" VerticalOptions="Center" 
+                           FontSize="16" TextColor="Gray"/>
+                </CollectionView.EmptyView>
+            </CollectionView>
+        </StackLayout>
+
+        <!-- Bottom navigation button frame -->
+        <Frame Grid.Row="1" Padding="0"
+               Margin="10"
+               CornerRadius="20"
+               HasShadow="True"
+               BorderColor="Gray"
+               VerticalOptions="End"
+               HorizontalOptions="FillAndExpand">
+            <Grid Padding="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+
+                <!-- Home Button -->
+                <ImageButton Source="homeicon.png"
+                             BackgroundColor="Transparent"
+                             WidthRequest="40"
+                             HeightRequest="40"
+                             Clicked="OnHomeButtonClicked" />
+
+                <!-- Events Button -->
+                <ImageButton Source="eventicon.png"
+                             BackgroundColor="Transparent"
+                             WidthRequest="40"
+                             HeightRequest="40"
+                             Grid.Column="1"
+                             Clicked="OnFetchEventsAsyncClicked" />
+
+                <!-- Logout Button -->
+                <ImageButton Source="logout.png"
+                             BackgroundColor="Transparent"
+                             WidthRequest="40"
+                             HeightRequest="40"
+                             Grid.Column="2"
+                             Clicked="OnLogoutButtonClicked" />
+            </Grid>
+        </Frame>
+    </Grid>
 </ContentPage>

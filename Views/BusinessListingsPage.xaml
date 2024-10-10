@@ -2,86 +2,133 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LocalBusinessExplorer.Views.BusinessListingsPage"
-             >
-    <!-- Add a Navigation Bar with a Back Button -->
+             xmlns:local="clr-namespace:LocalBusinessExplorer.Converters">
 
-    <StackLayout Padding="10">
-        <Label Text="Back"
-           FontSize="18"
-           FontAttributes="None"
-           HorizontalOptions="Start">
-            <Label.GestureRecognizers>
-                <TapGestureRecognizer Tapped="OnTitleTapped" />
+    <!-- Add the converter for inverse binding -->
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:InverseBoolConverter x:Key="InverseBoolConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
 
-            </Label.GestureRecognizers>
-        </Label>
-        <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" IsVisible="{Binding IsBusy}">
-            <ActivityIndicator IsRunning="{Binding IsBusy}" 
-                               Color="Black"
-                               VerticalOptions="FillAndExpand"
-                               HorizontalOptions="FillAndExpand" />
+    <!-- Use a Grid layout to place the button frame at the bottom -->
+    <Grid>
+        <!-- Main content of the page (Business listings) -->
+        <StackLayout Grid.Row="0" Padding="10">
 
-            <!-- Loading Text -->
-            <Label Text="Loading businesses, please wait..."
-                   TextColor="Black"
-                   FontSize="Medium"
-                   VerticalOptions="CenterAndExpand"
-                   HorizontalOptions="CenterAndExpand" />
+
+            <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" IsVisible="{Binding IsBusy}">
+                <ActivityIndicator IsRunning="{Binding IsBusy}" 
+                                   Color="Black"
+                                   VerticalOptions="FillAndExpand"
+                                   HorizontalOptions="FillAndExpand" />
+
+                <!-- Loading Text -->
+                <Label Text="Loading businesses, please wait..."
+                       TextColor="Black"
+                       FontSize="Medium"
+                       VerticalOptions="CenterAndExpand"
+                       HorizontalOptions="CenterAndExpand" />
+            </StackLayout>
+
+            <!-- ListView to display business listings -->
+            <ListView x:Name="BusinessListView" ItemsSource="{Binding Places}" HasUnevenRows="True" IsVisible="{Binding IsBusy, Converter={StaticResource InverseBoolConverter}}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <!-- Custom ViewCell Template for each item -->
+                        <ViewCell>
+                            <!-- Border to provide container with padding and border -->
+                            <Border Stroke="LightGray" StrokeThickness="1" Padding="10" Margin="5" BackgroundColor="White" >
+                                <!-- Grid for structured layout -->
+                                <Grid RowDefinitions="Auto, Auto, Auto" ColumnDefinitions="Auto, *" Padding="10">
+
+                                    <!-- Border for Icon -->
+                                    <Border  WidthRequest="50" HeightRequest="50" HorizontalOptions="Start" VerticalOptions="Center">
+                                        <Image Source="{Binding Icon}" 
+                                               Aspect="AspectFill" 
+                                               VerticalOptions="Center" 
+                                               HorizontalOptions="Center"
+                                               WidthRequest="50" 
+                                               HeightRequest="50" />
+                                    </Border>
+
+                                    <!-- Business Name (Bold text) -->
+                                    <Label Grid.Column="1" Text="{Binding Name}" FontAttributes="Bold" FontSize="18" Margin="5,0,0,0" />
+
+                                    <!-- Vicinity (Business Location) -->
+                                    <Label Grid.Row="1" Grid.Column="1" Text="{Binding Vicinity}" FontSize="14" Margin="5,0,0,0"  TextColor="Black" Padding="0,0,0,0"/>
+
+                                    <!-- Button to show directions, placed in the third row -->
+                                    <Frame Grid.Row="2" Grid.ColumnSpan="2" BorderColor="Black" Padding="0" HasShadow="False">
+                                        <Grid BackgroundColor="White">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <!-- Adjust width to auto for a closer fit -->
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <Image Source="getdirection.png" WidthRequest="20" HeightRequest="20" Margin="100,0,0,0" Grid.Column="0" />
+                                            <!-- Reduced margin -->
+
+                                            <Button Text="Directions"
+                                                    TextColor="Black"
+                                                    BackgroundColor="Transparent"
+                                                    BorderWidth="0"
+                                                    Grid.Column="1"
+                                                    HorizontalOptions="Start" 
+                                                Margin="0,0,5,0"/>
+                                        </Grid>
+                                    </Frame>
+
+                                </Grid>
+                            </Border>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
 
-        <!-- ListView to display business listings -->
-        <ListView x:Name="BusinessListView" ItemsSource="{Binding Places}" HasUnevenRows="True">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <!-- Custom ViewCell Template for each item -->
-                    <ViewCell>
-                        <!-- Border to provide container with padding and border -->
-                        <Border Stroke="LightGray" StrokeThickness="1" Padding="10" Margin="5" BackgroundColor="White" >
-                            <!-- Grid for structured layout -->
-                            <Grid RowDefinitions="Auto, Auto, Auto" ColumnDefinitions="Auto, *" Padding="10">
+        <!-- Add the bottom button frame in a new Grid row, hide when loading -->
+        <Frame Grid.Row="1" Padding="0"
+               Margin="10"
+               CornerRadius="20"
+               HasShadow="True"
+               BorderColor="Gray"
+               VerticalOptions="End"
+               HorizontalOptions="FillAndExpand"
+               IsVisible="{Binding IsBusy, Converter={StaticResource InverseBoolConverter}}">
+            <Grid Padding="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
 
-                                <!-- Border for Icon -->
-                                <Border  WidthRequest="50" HeightRequest="50" HorizontalOptions="Start" VerticalOptions="Center">
-                                    <Image Source="{Binding Icon}" 
-                                           Aspect="AspectFill" 
-                                           VerticalOptions="Center" 
-                                           HorizontalOptions="Center"
-                                           WidthRequest="50" 
-                                           HeightRequest="50" />
-                                </Border>
+                <!-- Home Button -->
+                <ImageButton Source="homeicon.png"
+                             BackgroundColor="Transparent"
+                             WidthRequest="40"
+                             HeightRequest="40"
+                             Clicked="OnHomeButtonClicked"
+                           />
 
-                                <!-- Business Name (Bold text) -->
-                                <Label Grid.Column="1" Text="{Binding Name}" FontAttributes="Bold" FontSize="18" Margin="5,0,0,0" />
+                <!-- Events Button -->
+                <ImageButton Source="eventicon.png"
+                             BackgroundColor="Transparent"
+                             WidthRequest="40"
+                             HeightRequest="40"
+                             Grid.Column="1"
+                             Clicked="OnFetchEventsAsyncClicked"
+                              />
 
-                                <!-- Vicinity (Business Location) -->
-                                <Label Grid.Row="1" Grid.Column="1" Text="{Binding Vicinity}" FontSize="14" Margin="5,0,0,0"  TextColor="Black" Padding="0,0,0,0"/>
-
-                                <!-- Button to show directions, placed in the third row -->
-                                <Frame Grid.Row="2" Grid.ColumnSpan="2" BorderColor="Black" Padding="0" HasShadow="False">
-                                    <Grid BackgroundColor="White">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="Auto" />
-                                            <!-- Adjust width to auto for a closer fit -->
-                                            <ColumnDefinition Width="*" />
-                                        </Grid.ColumnDefinitions>
-                                        <Image Source="getdirection.png" WidthRequest="20" HeightRequest="20" Margin="100,0,0,0" Grid.Column="0" />
-                                        <!-- Reduced margin -->
-
-                                        <Button Text="Directions"
-                                                TextColor="Black"
-                                                BackgroundColor="Transparent"
-                                                BorderWidth="0"
-                                                Grid.Column="1"
-                                                HorizontalOptions="Start" 
-                                            Margin="0,0,5,0"/>
-                                    </Grid>
-                                </Frame>
-
-                            </Grid>
-                        </Border>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-    </StackLayout>
+                <!-- Logout Button -->
+                <ImageButton Source="logout.png"
+                             BackgroundColor="Transparent"
+                             WidthRequest="40"
+                             HeightRequest="40"
+                             Grid.Column="2"
+                              Clicked="OnLogoutButtonClicked"
+                             />
+            </Grid>
+        </Frame>
+    </Grid>
 </ContentPage>

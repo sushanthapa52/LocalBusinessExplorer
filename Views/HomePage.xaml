@@ -69,7 +69,7 @@
                                 ImageSource="map_store.png"
                                 ContentLayout="Top, 0"
                                 Clicked="OnCategoryButtonClicked"
-                                CommandParameter="groceries shop walmart" />
+                                CommandParameter="groceries shop walmart stores" />
 						</Frame>
 
 						<Frame Grid.Row="0" Grid.Column="1"
@@ -84,7 +84,7 @@
                                 ImageSource="theater.png"
                                 ContentLayout="Top, 0"
                                 Clicked="OnCategoryButtonClicked"
-                                CommandParameter="theater" />
+                                CommandParameter="theater cinemas movies" />
 						</Frame>
 
 						<Frame Grid.Row="0" Grid.Column="2"
@@ -99,7 +99,7 @@
                                 TextColor="Black"
                                 ContentLayout="Top, 0"
                                 Clicked="OnCategoryButtonClicked"
-                                CommandParameter="restaurant" />
+                                CommandParameter="restaurant cafe pizza " />
 						</Frame>
 
 						<Frame Grid.Row="1" Grid.Column="0"
@@ -114,7 +114,7 @@
                                 TextColor="Black"
                                 ContentLayout="Top, 0"
                                 Clicked="OnCategoryButtonClicked"
-                                CommandParameter="gas_station" />
+                                CommandParameter="gas_station fuel petrol " />
 						</Frame>
 
 						<Frame Grid.Row="1" Grid.Column="1"
@@ -144,7 +144,7 @@
                                 TextColor="Black"
                                 ContentLayout="Top, 0"
                                 Clicked="OnCategoryButtonClicked"
-                                CommandParameter="gym" />
+                                CommandParameter="gym fitness " />
 						</Frame>
 
 						<Frame Grid.Row="2" Grid.Column="0"
@@ -159,7 +159,7 @@
                                 TextColor="Black"
                                 ContentLayout="Top, 0"
                                 Clicked="OnCategoryButtonClicked"
-                                CommandParameter="event" />
+                                CommandParameter="event conference_hall auditorium" />
 						</Frame>
 
 						<Frame Grid.Row="2" Grid.Column="1"
@@ -174,7 +174,7 @@
                                 TextColor="Black"
                                 ContentLayout="Top, 0"
                                 Clicked="OnCategoryButtonClicked"
-                                CommandParameter="book_store" />
+                                CommandParameter="book_store library books magazine papers" />
 						</Frame>
 
 						<Frame Grid.Row="2" Grid.Column="2"
@@ -189,47 +189,45 @@
                                 TextColor="Black"
                                 ContentLayout="Top, 0"
                                 Clicked="OnCategoryButtonClicked"
-                                CommandParameter="cafe" />
+                                CommandParameter="cafe starbucks coffee tea drinks" />
 						</Frame>
 					</Grid>
 
 					<!-- Nearby events button -->
-					<Frame Padding="0"
-       Margin="10"
-       CornerRadius="20"
-       HasShadow="True"
-       BorderColor="Gray">
-						<Grid Padding="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
-							<Grid.ColumnDefinitions>
-								<ColumnDefinition Width="1*" />
-								<ColumnDefinition Width="1*" />
-								<ColumnDefinition Width="1*" />
-							</Grid.ColumnDefinitions>
+                    <Frame Padding="0"
+                           Margin="10"
+                           CornerRadius="20"
+                           HasShadow="True"
+                           BorderColor="Gray">
+                        <Grid Padding="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="1*" />
+                            </Grid.ColumnDefinitions>
 
-							<ImageButton Source="homeicon.png"
+                            <ImageButton Source="homeicon.png"
 										 BackgroundColor="Transparent"
 										 WidthRequest="40"
 										 HeightRequest="40"
 										 Clicked="OnHomeButtonClicked" />
 
-							<ImageButton Source="eventicon.png"
+                            <ImageButton Source="eventicon.png"
 										 BackgroundColor="Transparent"
 										 WidthRequest="40"
 										 HeightRequest="40"
 										 Grid.Column="1"
 										 Clicked="OnFetchEventsAsyncClicked" />
 
-							<ImageButton Source="logout.png"
+                            <ImageButton Source="logout.png"
 										 BackgroundColor="Transparent"
 										 WidthRequest="40"
 										 HeightRequest="40"
 										 Grid.Column="2"
 										 Clicked="OnLogoutButtonClicked" />
-						</Grid>
-					</Frame>
-
-
-				</StackLayout>
+                        </Grid>
+                    </Frame>
+                </StackLayout>
 			</ScrollView>
 		</Grid>
 	</Grid>
