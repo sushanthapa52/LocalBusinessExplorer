@@ -88,5 +88,21 @@ public partial class HomePage : ContentPage
 
 
     }
+    // Event handler for the Home button click
+    private async void OnHomeButtonClicked(object sender, EventArgs e)
+    {
+        await Shell.Current.GoToAsync($"///{nameof(HomePage)}");
+
+
+    }
+
+    // Event handler for the Fetch Events button click
+
+    // Event handler for the Logout button click
+    private async void OnLogoutButtonClicked(object sender, EventArgs e)
+    {
+        await Shell.Current.GoToAsync($"///{nameof(LoginPage)}");
+
+    }
 
 }

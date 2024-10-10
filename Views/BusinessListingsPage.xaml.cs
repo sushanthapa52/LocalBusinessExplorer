@@ -16,6 +16,11 @@ public partial class BusinessListingsPage : ContentPage
     }
     private async void OnTitleTapped(object sender, EventArgs e)
     {
+        // First, get the ViewModel instance
+        var viewModel = (BusinessListingsViewModel)BindingContext;
+
+        // Clear the Places collection before navigating to the HomePage
+        viewModel.Places.Clear();
 
         await Shell.Current.GoToAsync($"///{nameof(HomePage)}");
     }

@@ -31,5 +31,7 @@
     <ShellContent
     ContentTemplate="{DataTemplate local:EventsPage}"
     Route="EventsPage" />
+    
+    
 
 </Shell>

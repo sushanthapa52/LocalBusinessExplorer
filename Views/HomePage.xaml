@@ -29,14 +29,7 @@
                       SearchButtonPressed="OnCategoryButtonClicked"
 					    Text="{Binding SearchText}"
 />
-				</Frame>
-
-                    <!-- ImageButton for settings icon -->
-                    <ImageButton Grid.Column="1"
-                             Source="hamburger.png" 
-                              HeightRequest="25"
-                              WidthRequest="25"
-                             Margin="5"/>
+				</Frame>                   
 
             </Grid>
 
@@ -76,7 +69,7 @@
                                 ImageSource="map_store.png"
                                 ContentLayout="Top, 0"
                                 Clicked="OnCategoryButtonClicked"
-                                CommandParameter="retail" />
+                                CommandParameter="groceries shop walmart" />
 						</Frame>
 
 						<Frame Grid.Row="0" Grid.Column="1"
@@ -201,20 +194,41 @@
 					</Grid>
 
 					<!-- Nearby events button -->
-					<Frame Padding="0,0,0,0"
-                           Margin="10"
-                           CornerRadius="20"
-                           HasShadow="True"
-                           BorderColor="Gray">
-						<Button Text="Check Nearby Events"
-                             BackgroundColor="White"
-                             TextColor="Black"
-                             BorderWidth="1"
-                             CornerRadius="20"
-                             Padding="10,5"
-                             Clicked="OnFetchEventsAsyncClicked"
-                              />
+					<Frame Padding="0"
+       Margin="10"
+       CornerRadius="20"
+       HasShadow="True"
+       BorderColor="Gray">
+						<Grid Padding="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="1*" />
+								<ColumnDefinition Width="1*" />
+								<ColumnDefinition Width="1*" />
+							</Grid.ColumnDefinitions>
+
+							<ImageButton Source="homeicon.png"
+										 BackgroundColor="Transparent"
+										 WidthRequest="40"
+										 HeightRequest="40"
+										 Clicked="OnHomeButtonClicked" />
+
+							<ImageButton Source="eventicon.png"
+										 BackgroundColor="Transparent"
+										 WidthRequest="40"
+										 HeightRequest="40"
+										 Grid.Column="1"
+										 Clicked="OnFetchEventsAsyncClicked" />
+
+							<ImageButton Source="logout.png"
+										 BackgroundColor="Transparent"
+										 WidthRequest="40"
+										 HeightRequest="40"
+										 Grid.Column="2"
+										 Clicked="OnLogoutButtonClicked" />
+						</Grid>
 					</Frame>
+
+
 				</StackLayout>
 			</ScrollView>
 		</Grid>

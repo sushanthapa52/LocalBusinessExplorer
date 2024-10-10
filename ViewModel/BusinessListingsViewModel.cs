@@ -80,7 +80,7 @@ namespace LocalBusinessExplorer.ViewModel
                 {
                     // api key section
                     var apiKey = _apiKey;
-                    var url = $"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location={location.Latitude},{location.Longitude}&radius=5000&type={category_type}&key={apiKey}";
+                    var url = $"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location={location.Latitude},{location.Longitude}&radius=5000&keyword={category_type}&key={apiKey}";
 
                     using (var httpClient = new HttpClient())
                     {
