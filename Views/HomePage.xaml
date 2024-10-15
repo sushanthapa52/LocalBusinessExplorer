@@ -189,7 +189,7 @@
                                 TextColor="Black"
                                 ContentLayout="Top, 0"
                                 Clicked="OnCategoryButtonClicked"
-                                CommandParameter="cafe starbucks coffee tea drinks" />
+                                CommandParameter="cafe coffee tea" />
 						</Frame>
 					</Grid>
 
