@@ -1,44 +1,29 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="LocalBusinessExplorer.Views.BusinessDetails">
-     <ScrollView>
-     <StackLayout Padding="10">
-         <Grid>
-             <Grid.ColumnDefinitions>
-                 <ColumnDefinition Width="Auto"/>
-                 <ColumnDefinition Width="*"/>
-             </Grid.ColumnDefinitions>
-             
-             <Button Text="&#x2190;" 
-                     Grid.Column="0" 
-                     BackgroundColor="Transparent" 
-                     />
-         </Grid>
+             x:Class="LocalBusinessExplorer.Views.BusinessDetails"
+             xmlns:maps="clr-namespace:Microsoft.Maui.Controls.Maps;assembly=Microsoft.Maui.Controls.Maps"
+>
+    <!-- Toolbar with a back button -->
 
-         <CarouselView ItemsSource="{Binding Images}">
-             <CarouselView.ItemTemplate>
-                 <DataTemplate>
-                     <Image Source="{Binding}" Aspect="AspectFill"/>
-                 </DataTemplate>
-             </CarouselView.ItemTemplate>
-         </CarouselView>
 
-         <Frame Margin="0, 10, 0, 0" Padding="10" CornerRadius="5" BorderColor="Gray">
-             <StackLayout>
-                 <Label Text="Tim Hortons" FontSize="Medium" FontAttributes="Bold"/>
-                 <Label Text="Open" TextColor="Green" FontSize="Small"/>
-                 <Label Text="Closes 02:00" FontSize="Small"/>
-                 <Label Text="875 Notre Dame Ave, Sudbury, ON P3A 2T2" FontSize="Small"/>
-                 <Label Text="www.wulalawulala.com" FontSize="Small" TextColor="Blue"/>
-                 <Button Text="Directions" 
-                         HorizontalOptions="Center" 
-                         BackgroundColor="LightGray" 
-                         BorderColor="Black" 
-                         BorderWidth="1"
-                         />
-             </StackLayout>
-         </Frame>
-     </StackLayout>
- </ScrollView>
+    <!-- Page content goes here -->
+    <StackLayout Padding="20">
+        <!-- Display the business name -->
+        <Label Text="{Binding Name}" FontSize="Large" FontAttributes="Bold" TextColor="Black" />
+
+        <!-- Display the business vicinity/location -->
+        <Label Text="{Binding Vicinity}" FontSize="Medium" TextColor="Gray" />
+
+        <!-- Additional details -->
+        <Label Text="{Binding Details}" FontSize="Medium" TextColor="Black" />
+
+        <maps:Map x:Name="MapView"
+                  IsShowingUser="True"
+                  VerticalOptions="FillAndExpand"
+                  HorizontalOptions="FillAndExpand"/>
+    </StackLayout>
+
+
+
 </ContentPage>

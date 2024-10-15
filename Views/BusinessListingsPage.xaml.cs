@@ -19,18 +19,27 @@ public partial class BusinessListingsPage : ContentPage
         BindingContext = _viewModel;
         _firebaseDb = firebaseDb;
         _eventDataService = eventDataService;
+        BusinessListView.ItemTapped += OnItemTapped;
+
 
     }
-    private async void OnTitleTapped(object sender, EventArgs e)
+    private async void OnItemTapped(object sender, ItemTappedEventArgs e)
     {
-        // First, get the ViewModel instance
-        var viewModel = (BusinessListingsViewModel)BindingContext;
+        if (e.Item == null)
+            return;
 
-        // Clear the Places collection before navigating to the HomePage
-        viewModel.Places.Clear();
+        // Navigate to the BusinessDetailsPage and pass the selected business
+        var selectedBusiness = (Place)e.Item;
+        double latitude = selectedBusiness.Geometry.Location.Latitude;
+        double longitude = selectedBusiness.Geometry.Location.Longitude;
 
-        await Shell.Current.GoToAsync($"///{nameof(HomePage)}");
+
+        await Navigation.PushAsync(new BusinessDetails(selectedBusiness,latitude, longitude));
+
+        // Deselect the item
+        ((ListView)sender).SelectedItem = null;
     }
+
     public async void OnFetchEventsAsyncClicked(object sender, EventArgs e)
     {
 
@@ -39,25 +48,18 @@ public partial class BusinessListingsPage : ContentPage
 
 
         await Shell.Current.GoToAsync($"///{nameof(EventsPage)}");
-
-
-
-
     }
     // Event handler for the Home button click
     private async void OnHomeButtonClicked(object sender, EventArgs e)
     {
         await Shell.Current.GoToAsync($"///{nameof(HomePage)}");
 
-
     }
 
-    // Event handler for the Fetch Events button click
-
-    // Event handler for the Logout button click
     private async void OnLogoutButtonClicked(object sender, EventArgs e)
     {
         await Shell.Current.GoToAsync($"///{nameof(LoginPage)}");
 
     }
+
 }

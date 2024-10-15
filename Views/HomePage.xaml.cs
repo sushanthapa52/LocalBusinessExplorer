@@ -1,14 +1,10 @@
-using Firebase.Auth;
+
 using LocalBusinessExplorer.Entities;
 using LocalBusinessExplorer.Services;
 using LocalBusinessExplorer.ViewModel;
 using Microsoft.Maui.Controls.Maps;
 using Microsoft.Maui.Maps;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using SerpApi;
-using System.Collections;
-using static System.Net.WebRequestMethods;
+
 
 namespace LocalBusinessExplorer.Views;
 
@@ -57,7 +53,7 @@ public partial class HomePage : ContentPage
             if (location != null)
             {
                 // Move the map to center on the user's location
-                var mapSpan = MapSpan.FromCenterAndRadius(new Location(location.Latitude, location.Longitude), Distance.FromKilometers(3));
+                var mapSpan = MapSpan.FromCenterAndRadius(new Microsoft.Maui.Devices.Sensors.Location(location.Latitude, location.Longitude), Distance.FromKilometers(3));
 
                 MyMap.MoveToRegion(mapSpan);
 
@@ -85,8 +81,6 @@ public partial class HomePage : ContentPage
         await Shell.Current.GoToAsync($"///{nameof(EventsPage)}");
 
 
-
-
     }
     // Event handler for the Home button click
     private async void OnHomeButtonClicked(object sender, EventArgs e)
@@ -96,9 +90,6 @@ public partial class HomePage : ContentPage
 
     }
 
-    // Event handler for the Fetch Events button click
-
-    // Event handler for the Logout button click
     private async void OnLogoutButtonClicked(object sender, EventArgs e)
     {
         await Shell.Current.GoToAsync($"///{nameof(LoginPage)}");

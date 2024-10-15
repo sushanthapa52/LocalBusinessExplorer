@@ -109,7 +109,7 @@
                                BorderColor="Gray"
                                Margin="5">
 							<Button Text="GAS"
-                                ImageSource="map_store.png"
+                                ImageSource="petrol_pump.png"
                                 BackgroundColor="White"
                                 TextColor="Black"
                                 ContentLayout="Top, 0"

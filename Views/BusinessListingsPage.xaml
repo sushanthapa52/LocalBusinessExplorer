@@ -32,7 +32,7 @@
             </StackLayout>
 
             <!-- ListView to display business listings -->
-            <ListView x:Name="BusinessListView" ItemsSource="{Binding Places}" HasUnevenRows="True" IsVisible="{Binding IsBusy, Converter={StaticResource InverseBoolConverter}}">
+            <ListView x:Name="BusinessListView" ItemsSource="{Binding Places}" HasUnevenRows="True" ItemTapped="OnItemTapped" IsVisible="{Binding IsBusy, Converter={StaticResource InverseBoolConverter}}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <!-- Custom ViewCell Template for each item -->

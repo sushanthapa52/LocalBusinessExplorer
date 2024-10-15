@@ -1,6 +1,7 @@
 ﻿using LocalBusinessExplorer.Services;
 using LocalBusinessExplorer.Views;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Maui.Controls.Shapes;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -54,6 +55,7 @@ namespace LocalBusinessExplorer.ViewModel
                 OnPropertyChanged(nameof(IsBusy));
             }
         }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         public ICommand LoadBusinessesCommand { get; }
@@ -123,12 +125,30 @@ namespace LocalBusinessExplorer.ViewModel
         [JsonProperty("icon")]
         public string Icon { get; set; }
 
-        // Other fields can be added here based on what you need
+
+
+        // Geometry object to hold location information
+        [JsonProperty("geometry")]
+        public Geometry Geometry { get; set; }
     }
 
     public class GooglePlacesResponse
     {
         [JsonProperty("results")]
         public List<Place> Results { get; set; }
+    }
+    public class Geometry
+    {
+        [JsonProperty("location")]
+        public Location Location { get; set; }
+    }
+
+    public class Location
+    {
+        [JsonProperty("lat")]
+        public double Latitude { get; set; }
+
+        [JsonProperty("lng")]
+        public double Longitude { get; set; }
     }
 }
