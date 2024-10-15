@@ -90,9 +90,15 @@ public partial class HomePage : ContentPage
 
     }
 
+
+
     private async void OnLogoutButtonClicked(object sender, EventArgs e)
     {
-        await Shell.Current.GoToAsync($"///{nameof(LoginPage)}");
+        bool answer = await DisplayAlert("Logout", "Do you really want to log out?", "Yes", "No");
+        if (answer)
+        {
+            await Shell.Current.GoToAsync($"///{nameof(LoginPage)}");
+        }
 
     }
 
