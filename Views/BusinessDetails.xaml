@@ -3,27 +3,42 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LocalBusinessExplorer.Views.BusinessDetails"
              xmlns:maps="clr-namespace:Microsoft.Maui.Controls.Maps;assembly=Microsoft.Maui.Controls.Maps"
->
-    <!-- Toolbar with a back button -->
+             xmlns:local="clr-namespace:LocalBusinessExplorer.Converters">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:InverseBoolConverter x:Key="InverseBoolConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
 
-
-    <!-- Page content goes here -->
     <StackLayout Padding="20">
-        <!-- Display the business name -->
-        <Label Text="{Binding Name}" FontSize="Large" FontAttributes="Bold" TextColor="Black" />
+        <!-- Business Details Block -->
+        <StackLayout BackgroundColor="LightGray" Padding="10" Margin="0,0,0,20">
+            <!-- Display the business name -->
+            <Label Text="{Binding Name}" FontSize="Large" FontAttributes="Bold" TextColor="Black" />
 
-        <!-- Display the business vicinity/location -->
-        <Label Text="{Binding Vicinity}" FontSize="Medium" TextColor="Gray" />
+            <!-- Display the business vicinity/location -->
+            <Label Text="{Binding Vicinity}" FontSize="Medium" TextColor="Gray" />
 
-        <!-- Additional details -->
-        <Label Text="{Binding Details}" FontSize="Medium" TextColor="Black" />
 
+
+            <!-- Display Open/Closed status -->
+            <Label Text="{Binding OpeningHours.OpenNow, Converter={StaticResource BoolToOpenClosedConverter}}" 
+                   FontSize="Medium" TextColor="Green" />
+
+            <!-- Display the business rating and user ratings total -->
+            <StackLayout Orientation="Horizontal" Spacing="10">
+                <Label Text="Rating:" FontSize="Medium" FontAttributes="Bold" TextColor="Black" />
+                <Label Text="{Binding Rating}" FontSize="Medium" TextColor="Black" />
+                <Label Text="(" FontSize="Medium" />
+                <Label Text="{Binding UserRatingsTotal}" FontSize="Medium" TextColor="Gray" />
+                <Label Text="reviews)" FontSize="Medium" />
+            </StackLayout>
+        </StackLayout>
+
+        <!-- Map Block -->
         <maps:Map x:Name="MapView"
                   IsShowingUser="True"
                   VerticalOptions="FillAndExpand"
-                  HorizontalOptions="FillAndExpand"/>
+                  HorizontalOptions="FillAndExpand" />
     </StackLayout>
-
-
-
 </ContentPage>

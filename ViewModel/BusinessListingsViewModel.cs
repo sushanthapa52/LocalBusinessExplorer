@@ -126,10 +126,25 @@ namespace LocalBusinessExplorer.ViewModel
         public string Icon { get; set; }
 
 
-
         // Geometry object to hold location information
         [JsonProperty("geometry")]
         public Geometry Geometry { get; set; }
+
+
+        [JsonProperty("rating")]
+        public double Rating { get; set; } // New property for business rating
+
+        [JsonProperty("user_ratings_total")]
+        public int UserRatingsTotal { get; set; } // New property for total number of ratings
+
+
+        [JsonProperty("opening_hours")]
+        public OpeningHours OpeningHours { get; set; }  // Add this
+    }
+    public class OpeningHours
+    {
+        [JsonProperty("open_now")]
+        public bool OpenNow { get; set; }
     }
 
     public class GooglePlacesResponse
